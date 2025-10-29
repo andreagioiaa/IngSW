@@ -1,0 +1,180 @@
+
+--- Lezione 29 ottobre 2025 ---
+
+\section{DIAGRAMMI DEI CASI D'USO}
+
+\underline{DEF. \textbf{Diagramma comportamentale}}
+modella il comportamento esterno del sistema, senza specificare nel dettaglio come questo comportamento viene realizzato, modella l'interazione tra il sistema e gli agenti esterni.
+
+DIAGRAMMI DEI CASI D'USO NEL PROCESSO SOFTWARE
+Utilizzato nella raccolta dei requisiti, diagramma con tutti i requisiti funzionali del sistema, descrive le tipiche interazioni tra utenti e sistema.
+Viene adottato il punto di vista degli utenti, so solo cosa do e cosa mi torna il software.
+
+
+SCENARI E CASI D'USO
+- \textbf{Scenario}: sequenza di passi che caratterizzano una particolare interazione tra utente e sistema
+- \textbf{Caso d'uso}: insieme di scenari che hanno uno scopo finale dell'utente in comune
+Gli utenti sono \textbf{attori} nello scenario.
+Il caso d'uso è una tipica interazione tra attore e sistema per svolgere un'unità di lavoro utile, non rivela l'organizzazione interna del sistema.
+L'insieme dei casi d'uso rappresenta le funzionalità che il sistema offre agli attori.
+Il diagramma UML dei casi d'uso è comprensibile anche ai non addetti ai lavori.
+La descrizione di un caso d'uso specifica cosa fa il sistema in seguito ad uno stimolo.
+Lo stimolo può partire da un attore o anche dal sistema.
+Un caso d'uso corrisponde ad un compito:
+- che l'attore chiede al sistema di eseguire
+- che il sistema esegue autonomamente
+
+
+ELEMENTI DEI CASI D'USO
+
+SUBJECT (CONFINI DEL SISTEMA)
+Rappresenta il confine tra ciò che è all'interno e ciò che è all'esterno del sistema, quello che si trova all'interno andrà progettato, realizzato, verificato e validato.
+
+ATTORE
+Rappresenta un ruolo che l'utente del caso d'uso svolge nell'interagire con il sistema.
+Gli attorni sono sempre esterni al sistema.
+Un attore di un caso d'uso può essere:
+- una classe di persone fisiche
+- altro sistema software
+- dispositivo hardware esterno
+
+Un attore di caso d'uso può essere:
+- attore primario, se persegue lo scopo che il caso d'uso cerca di soddisfare
+- attore secondario, altri attori con cui il sistema interagisce per svolgere con successo il caso d'uso
+
+Un attore primario può fornire lo stimolo che avvia il caso d'uso o interagisce dopo che il caso d'uso è stato avviato.
+
+CASO D'USO
+Rappresenta una sequenza di azioni che un sistema può eseguire interagendo con attori esterni, è un'unità di lavoro utile (elaborazione) che il sistema esegue dopo l'evento di innesco del caso d'uso:
+- stimolato dall'attore primario per eseguire un compito che l'attore deve eseguire
+- il sistema può iniziare il caso d'uso e interagire con uno o più attori esterni per eseguire un compito
+
+
+DESCRIZIONE DEGLI SCENARI
+SCENARI
+Un caso d'uso è descritto tramite un insieme di scenari di interazione tra gli attori ed il sistema.
+Uno scenario è una sequenza di azioni/interazioni fra sistema e attori.
+Il focus è rivolto all'interazione, non alle attività interne del sistema.
+Uno scenario definisce cosa accade nel sistema in seguito all'evento di innesco:
+- come e quando il caso d'uso inizia
+- chi inizia il caso d'uso
+- interazione tra attore e caso d'uso e cosa viene scambiato
+- come e quando c'è bisogno di dati memorizzati o di memorizzare i dati
+- come e quando il sistema d'uso termina
+Per ogni caso d'uso sono previsti scenari normali e scenari alternativi.
+
+STILI DESCRITTIVI DEGLI SCENARI
+Non esiste un modo standard per descrivere il contenuto di un caso d'uso.
+Stile di descrizione:
+- \texbf{testuali}: con flusso chiaro di eventi da seguire
+- \textbf{diagrammatici}: diagrammi UML di stato, sequenza, interazione
+
+
+SCENARI COME SEQUENZE DI PASSI
+Ogni scenario può essere espresso come sequenza di passi numerati:
+- ciascun passo corrisponde a un'interazione tra attore e sistema
+- il passo dev'essere espresso con una frase semplice che indichi chi lo sta eseguendo e qual è il suo intento, senza riportare dettagli tecnici sulle azioni
+
+SCENARI PRINCIPALI E ALTERNATIVI
+Un caso d'uso è una collezione di scenari correlati in cui gli attori interagiscono con il sistema per raggiungere l'obiettivo:
+- scenario principale di successo: descrive il flusso principale
+- percorsi alternativi, possono essere sia di successo che di insuccesso
+Il percorso alternativo riporta:
+- il numero del passo in cui si discosta dallo scenario principale
+- la condizione che deve essere soddisfatta per scatenare tale percorso invece dello scenario principale
+- al suo termine in quale punto (numero di passo) rientra nel flusso principale
+
+PRE-CONDIZIONI E POST-CONDIZIONI
+Oltre ai passi che compongono gli scenari, un caso d'uso può riportare le condizioni che si devono verificare prima e dopo il caso d'uso
+- Pre-Condizioni: ciò di cui il sistema deve assicurarsi prima di eseguire il caso d'uso
+- Post-Condizioni: ciò che il sistema deve garantire al termine del caso d'uso
+
+DESCRIZIONE DI UN CASO D'USO
+Per ogni caso d'uso è opportuno documentare gli scenari, non esiste un formato standard della descrizione, ogni organizzazione definisce il proprio formato.
+
+USO DI IF, WHILE E FOR NEGLI SCENARI
+Cicli WHILE o FOR possono essere usati per racchiudere gruppi di passi che devono essere ripetuti più volte (o in italiano per ogni e finchè).
+Le alternative possono essere descritte attraverso costrutti di selezione IF/ELSE (o in italiano, se e altrimenti).
+
+LINEE GUIDA PER LA DESCRIZIONE DEGLI SCENARI
+- Scrivere in stile essenziale, senza riferimenti all'implementazione
+- Descrivere casi d'uso concisi e completi
+- Descrivere casi d'uso a scatola nera
+Nella descrizione di un caso d'uso non devono essere indicati dettagli che rivelino le scelte di progetto del software:
+- quando si pensa ai casi d'uso, non si è ancora affrontato alcun aspetto della progettazione
+- non possono esserci riferimenti a specifici file, a meno che essi non rappresentino dei vincoli
+
+RELAZIONI TRA ATTORI E CASI D'USO
+
+GENERALIZZAZIONE DI ATTORI
+L'attore specializzato conserva le proprietà del generale oltre a possedere sue caratteristiche particolari.
+La freccia parte dall'attore specializzato e punta all'attore generale.
+La generalizzazione permette di astrarre ruoli comuni a più attori e semplificare i diagrammi.
+
+RELAZIONI FRA CASI D'USO
+Tra i casi d'uso possono esistere relazioni di tipo:
+- generalizzazione
+- inclusione
+- estensione
+Usate per strutturare ulteriormente un diagramma dei casi d'uso:
+- generalizzando/specializzando un caso d'uso
+- estraendo comportamenti comuni tra casi d'uso e inclusi in più casi d'uso
+- distinguendo comportamenti alternativi rispetto al caso d'uso base, estendendo il caso d'uso base con un caso d'uso alternativo
+
+GENERALIZZAZIONE TRA CASI D'USO
+Il caso d'uso generale rappresenta diversi casi d'uso simili.
+Un caso d'uso specializzato eredita comportamento e significato del caso d'uso generale, fornendo i dettagli specifici dei casi d'uso simili
+Un caso d'uso specializzato può aggiungere passi o modificare il comportamento del generale
+
+INCLUSIONE FRA CASI D'USO
+La relazione d'inclusione formalizza i casi in cui più casi d'uso includono una serie di azioni comuni.
+Il comportamento comune a più casi d'uso diventa un caso d'uso che è incluso nei casi d'uso di partenza.
+Il caso d'uso base è incompleto senza il caso incluso
+Rappresentato graficamente come una dipendenza stereotipata <<include>> che parte dal caso base e arriva al caso incluso.
+L'inclusione non contiene informazioni sull'ordine dei casi d'uso, il caso incluso è una sequenza di azioni che è eseguita una o più volte dai casi d'uso includenti.
+L'inclusione è simile a una chiamata a procedura: Include(TrovaDatiImpiegato)
+
+INCLUSIONE E GENERALIZZAZIONE
+Se un caso d'uso generale include un altro caso d'uso, tutte le sue specializzazioni "ereditano" tale inclusione.
+
+ESTENSIONE DI CASI D'USO
+Modella una sequenza opzionale di eventi o casi eccezionali, ogni estensione definisce un nuovo caso d'uso che estende il caso di partenza e ne varia il comportamento normale.
+Nel caso d'uso esteso (base) si agganciano ad uno o più punti d'estensione (XP: eXtension Points), le condizioni che fanno scattare l'estensione.
+Rappresentato graficamente come una dipendenza stereotipata <<extend>> che parte dall'estensione e arriva al caso base.
+
+L'estensione non contiene informazioni sull'ordine dei casi d'uso.
+Le estensioni potrebbero anche essere accessibili direttamente da un attore.
+In questo caso nel diagramma dei casi d'uso ci sarà un segmento di comunicazione tra l'attore e il caso d'uso esteso.
+
+I casi d'uso di estensione aggiungono un comportamento in corrispondenza dei punti di estensione.
+Il caso d'uso base si può svolgere anche senza i casi d'uso d'estensione.
+Creando estensioni separate, la descrizione del caso base rimane semplice.
+
+
+ESTENSIONI VS SCENARI ALTERNATIVI: ALTERNATIVE MODELLISTICHE
+L'esempio "EffettuaOrdine" si poteva anche risolvere usando un unico caso d'uso:
+- la soluzione con tre casi d'uso è più utile nel caso in cui i casi d'uso estesi abbiano ulteriori legami e/o siano direttamente richiamabili dall'utente
+- la soluzione con un solo caso d'uso e più scenari fornisce una vista più compatta del sistema, e potrebbe essere preferibile se si vuole realizzare un modello dei casi d'uso meno dettagliato e più leggibile
+
+ERRORI TIPICI CON I CASI D'USO
+Diagrammi troppo complessi con molti casi d'uso: i casi d'uso rappresentano sequenze di azioni, non una singola azione.
+Ripetere il nome dello stesso caso d'uso più volte nello stesso diagramma.
+Le frecce delle relazioni di estensione o inclusione non sono tratteggiate, etichettate con <<extend>> o <<include>>, oppure nel verso sbagliato.
+
+REQUISITI FUNZIONALI E CASI D'USO
+La modellazione dei casi d'uso è una tecnica di ingegneria dei requisiti
+- Requisito funzionale: funzionalità richiesta dal committente
+- Caso d'uso: modalità di utilizzo del sistema da parte di un utente (attore)
+
+Tracciabilità tra requisiti e casi d'uso
+è importante incrociare requisiti funzionali e casi d'uso per verificare la reciproca copertura: ogni requisito dev'essere coperto da almeno un caso d'uso e viceversa, questa informazione può essere riportata nella \textbf{matrice di traccibilità}.
+
+PRODOTTO FINALE
+L'analisi dei casi d'uso produce:
+- un diagramma dei casi d'uso
+- le descrizioni di tutti gli scenari di tutti i casi d'uso
+
+Nel diagramma è contenuto solo un piccolo sottoinsieme delle informazioni contenute nelle descrizioni degli scenari, tutte le informazioni contenute nel diagramma sono contenute anche nelle descrizioni degli scenari.
+Il diagramma dei casi d'uso non dovrebbe mai essere considerato separatamente dalle descrizioni degli scenari.
+
+==> Fino a slide 53 di 8_use_cases.pdf

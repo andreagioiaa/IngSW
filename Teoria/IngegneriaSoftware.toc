@@ -1,0 +1,166 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Concetti fondamentali}{5}{}%
+\contentsline {subsection}{\numberline {1.1}Il software}{5}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}Tipologie di SW professionale}{5}{}%
+\contentsline {subsubsection}{\numberline {1.1.2}Complessità e costi del software}{5}{}%
+\contentsline {subsubsection}{\numberline {1.1.3}Sviluppo professionale di Software di qualità}{5}{}%
+\contentsline {subsubsection}{\numberline {1.1.4}Qualità del Software}{6}{}%
+\contentsline {subsection}{\numberline {1.2}Ingegneria del Software}{6}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}Nascita}{6}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}Definizioni}{6}{}%
+\contentsline {subsection}{\numberline {1.3}Processi Software}{6}{}%
+\contentsline {subsubsection}{\numberline {1.3.1}Metodi e Strumenti}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.2}Sfide}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.3}Principi Fondamentali dell'IS}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.4}Processo chiaro}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.5}Fidatezza e prestazioni}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.6}Requisiti}{7}{}%
+\contentsline {subsubsection}{\numberline {1.3.7}Riuso}{8}{}%
+\contentsline {subsubsection}{\numberline {1.3.8}Modello di processo Software}{8}{}%
+\contentsline {section}{\numberline {2}Processi Software}{8}{}%
+\contentsline {subsubsection}{\numberline {2.0.1}Code and Fix}{8}{}%
+\contentsline {subsubsection}{\numberline {2.0.2}Definizione}{8}{}%
+\contentsline {subsection}{\numberline {2.1}Attività dei processi Software}{9}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Attività fondamentali}{9}{}%
+\contentsline {subsection}{\numberline {2.2}Acquisizione, analisi e specifica dei requisiti}{9}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Deduzione e Analisi}{9}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Specifica}{10}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Convalida}{10}{}%
+\contentsline {subsubsection}{\numberline {2.2.4}Documento dei requisiti}{10}{}%
+\contentsline {subsection}{\numberline {2.3}Progettazione e sviluppo}{10}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Progettazione}{10}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Sviluppo}{11}{}%
+\contentsline {subsection}{\numberline {2.4}Verifica e Validazione}{11}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Test dei componenti}{11}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Test del sistema}{11}{}%
+\contentsline {subsubsection}{\numberline {2.4.3}Test del cliente}{11}{}%
+\contentsline {subsection}{\numberline {2.5}Evoluzione}{11}{}%
+\contentsline {section}{\numberline {3}Modelli di processi Software}{12}{}%
+\contentsline {subsection}{\numberline {3.1}Definizioni}{12}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Definizione W. Scacchi}{12}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}Definizione IEEE}{12}{}%
+\contentsline {subsection}{\numberline {3.2}Informazioni processo - modello}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Processo VS. Modello}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Punti di vista del processo}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Descrizione processo Software}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}Scelta del modello}{13}{}%
+\contentsline {subsection}{\numberline {3.3}Modello a cascata}{13}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Vantaggi e Svantaggi}{13}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Modello a cascata con retroazione}{13}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Modello a V}{14}{}%
+\contentsline {subsection}{\numberline {3.4}Modelli Evolutivi}{14}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}Modello a Sviluppo Incrementale}{14}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}Modello a Consegna Incrementale}{14}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Consegna VS Sviluppo Incrementale}{15}{}%
+\contentsline {subsubsection}{\numberline {3.4.4}Modello Prototipale}{15}{}%
+\contentsline {subsubsection}{\numberline {3.4.5}Back-To-Back Testing}{16}{}%
+\contentsline {subsection}{\numberline {3.5}Modelli Orientati al Riuso}{16}{}%
+\contentsline {subsection}{\numberline {3.6}Modelli Trasformazionali}{17}{}%
+\contentsline {section}{\numberline {4}Modelli Agili}{17}{}%
+\contentsline {subsubsection}{\numberline {4.0.1}Sviluppo agile del Software}{17}{}%
+\contentsline {subsubsection}{\numberline {4.0.2}Sviluppo rapido nel Software}{17}{}%
+\contentsline {subsection}{\numberline {4.1}Agilità}{18}{}%
+\contentsline {subsection}{\numberline {4.2}Caratteristiche dei metodi agili}{18}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}Processi Plan-Driven VS Agili}{18}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}Processi Plan-Driven e Agili}{18}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}Principi Agili}{19}{}%
+\contentsline {subsubsection}{\numberline {4.2.4}Applicabilità dei metodi agili}{19}{}%
+\contentsline {subsection}{\numberline {4.3}Tecniche Agili}{19}{}%
+\contentsline {subsubsection}{\numberline {4.3.1}Metodi Agili}{19}{}%
+\contentsline {subsubsection}{\numberline {4.3.2}Extreme Programming}{20}{}%
+\contentsline {subsubsection}{\numberline {4.3.3}Influenza dell'Extreme Programming}{20}{}%
+\contentsline {subsection}{\numberline {4.4}Storie Utente}{20}{}%
+\contentsline {subsection}{\numberline {4.5}Refactoring}{21}{}%
+\contentsline {subsection}{\numberline {4.6}Sviluppo Preceduto dai Test}{22}{}%
+\contentsline {subsubsection}{\numberline {4.6.1}Sviluppo Test-Driven (TDD)}{22}{}%
+\contentsline {subsubsection}{\numberline {4.6.2}Automazione dei test}{22}{}%
+\contentsline {subsubsection}{\numberline {4.6.3}Pro e Contro}{22}{}%
+\contentsline {subsection}{\numberline {4.7}Pair Programming}{23}{}%
+\contentsline {subsubsection}{\numberline {4.7.1}Pro e Contro}{23}{}%
+\contentsline {subsection}{\numberline {4.8}SCRUM - Gestione Agile della Progettazione}{23}{}%
+\contentsline {section}{\numberline {5}Tipologie di Requisiti}{24}{}%
+\contentsline {subsection}{\numberline {5.1}Definizione dei requisiti}{24}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Ingegneria dei Requisiti}{24}{}%
+\contentsline {subsection}{\numberline {5.2}Tipi di Requisiti}{24}{}%
+\contentsline {subsubsection}{\numberline {5.2.1}Requisiti Utente}{24}{}%
+\contentsline {subsubsection}{\numberline {5.2.2}Requisiti Sistema}{24}{}%
+\contentsline {subsubsection}{\numberline {5.2.3}Lettori delle specifiche dei requisiti}{25}{}%
+\contentsline {subsection}{\numberline {5.3}Requisiti funzionali e non funzionali}{25}{}%
+\contentsline {subsection}{\numberline {5.4}Requisiti Funzionali}{25}{}%
+\contentsline {subsubsection}{\numberline {5.4.1}Imprecisioni nei requisiti}{25}{}%
+\contentsline {subsubsection}{\numberline {5.4.2}Completezza e Consistenza dei requisiti}{25}{}%
+\contentsline {subsection}{\numberline {5.5}Requisiti Non Funzionali}{25}{}%
+\contentsline {subsubsection}{\numberline {5.5.1}Tipi di requisiti non funzionali}{26}{}%
+\contentsline {subsection}{\numberline {5.6}Verificabilità dei Requisiti}{26}{}%
+\contentsline {subsection}{\numberline {5.7}Requisiti di Dominio}{26}{}%
+\contentsline {subsubsection}{\numberline {5.7.1}Problemi dei Requisiti di Dominio}{26}{}%
+\contentsline {subsection}{\numberline {5.8}Ingegneria dei Requisiti}{26}{}%
+\contentsline {subsubsection}{\numberline {5.8.1}Modello Sequenziale}{27}{}%
+\contentsline {subsubsection}{\numberline {5.8.2}Modello a Spirale}{27}{}%
+\contentsline {section}{\numberline {6}Analisi, Specifica e Convalida dei Requisiti}{27}{}%
+\contentsline {subsection}{\numberline {6.1}Deduzione e Analisi dei Requisiti}{27}{}%
+\contentsline {subsubsection}{\numberline {6.1.1}Difficoltà}{27}{}%
+\contentsline {subsubsection}{\numberline {6.1.2}Processo}{27}{}%
+\contentsline {subsubsection}{\numberline {6.1.3}Tecniche per estrarre i requisiti}{28}{}%
+\contentsline {subsubsection}{\numberline {6.1.4}Interviste}{28}{}%
+\contentsline {subsubsection}{\numberline {6.1.5}Etnografia}{28}{}%
+\contentsline {subsubsection}{\numberline {6.1.6}Storie e Scenari}{29}{}%
+\contentsline {subsection}{\numberline {6.2}Specifica dei Requisiti}{29}{}%
+\contentsline {subsubsection}{\numberline {6.2.1}Specifica dei Requisiti Utente}{29}{}%
+\contentsline {subsubsection}{\numberline {6.2.2}Specifica dei Requisiti Sistema}{29}{}%
+\contentsline {subsubsection}{\numberline {6.2.3}Specifica dei Requisiti VS Progetto}{29}{}%
+\contentsline {subsubsection}{\numberline {6.2.4}Linguaggi per la specifica}{29}{}%
+\contentsline {subsubsection}{\numberline {6.2.5}Linguaggio Naturale (NL)}{30}{}%
+\contentsline {subsubsection}{\numberline {6.2.6}Specifiche Strutturate}{30}{}%
+\contentsline {section}{\numberline {7}Introduzione UML}{31}{}%
+\contentsline {subsection}{\numberline {7.1}Motivazione}{31}{}%
+\contentsline {subsection}{\numberline {7.2}Modellazione di un sistema}{31}{}%
+\contentsline {subsection}{\numberline {7.3}Terminologia}{31}{}%
+\contentsline {subsection}{\numberline {7.4}Linguaggi di Modellazione}{31}{}%
+\contentsline {subsubsection}{\numberline {7.4.1}Storia UML}{31}{}%
+\contentsline {subsection}{\numberline {7.5}UML: Notazioni + Meta-Modello}{31}{}%
+\contentsline {subsection}{\numberline {7.6}Regole Prescrittive e Descrittive}{32}{}%
+\contentsline {subsection}{\numberline {7.7}UML}{32}{}%
+\contentsline {subsection}{\numberline {7.8}Bozze: Espressività > Completezza}{32}{}%
+\contentsline {subsection}{\numberline {7.9}Progetto Dettagliato: Espressività + Completezza}{32}{}%
+\contentsline {subsection}{\numberline {7.10}UML come linguaggio di programmazione}{32}{}%
+\contentsline {subsection}{\numberline {7.11}Informazioni soppresse}{33}{}%
+\contentsline {subsection}{\numberline {7.12}Tipi di diagramma UML}{33}{}%
+\contentsline {subsection}{\numberline {7.13}Prospettive UML}{33}{}%
+\contentsline {subsection}{\numberline {7.14}Integrare UML nel processo di sviluppo}{33}{}%
+\contentsline {section}{\numberline {8}Diagrammi dei Casi d'Uso}{34}{}%
+\contentsline {subsubsection}{\numberline {8.0.1}Def. Diagramma Comportamentale}{34}{}%
+\contentsline {subsubsection}{\numberline {8.0.2}Diagramma dei casi d'uso nel processo software}{34}{}%
+\contentsline {subsubsection}{\numberline {8.0.3}Scenari e Casi d'Uso}{34}{}%
+\contentsline {subsection}{\numberline {8.1}Elementi dei Casi d'Uso}{34}{}%
+\contentsline {subsubsection}{\numberline {8.1.1}Subject (Confini del sistema)}{34}{}%
+\contentsline {subsubsection}{\numberline {8.1.2}Attore}{34}{}%
+\contentsline {subsubsection}{\numberline {8.1.3}Caso d'Uso}{35}{}%
+\contentsline {subsection}{\numberline {8.2}Descrizione degli scenari}{35}{}%
+\contentsline {subsubsection}{\numberline {8.2.1}Scenari}{35}{}%
+\contentsline {subsubsection}{\numberline {8.2.2}Stili di descrizione degli scenari}{35}{}%
+\contentsline {subsubsection}{\numberline {8.2.3}Scenari come sequenze di passi}{35}{}%
+\contentsline {subsubsection}{\numberline {8.2.4}Scenari principali e alternativi}{35}{}%
+\contentsline {subsubsection}{\numberline {8.2.5}Pre-Condizioni e Post-Condizioni}{36}{}%
+\contentsline {subsubsection}{\numberline {8.2.6}Descrizione di un Caso d'Uso}{36}{}%
+\contentsline {subsubsection}{\numberline {8.2.7}Uso di IF, WHILE e FOR negli scenari}{36}{}%
+\contentsline {subsubsection}{\numberline {8.2.8}Linee guida per la descrizione degli scenari}{36}{}%
+\contentsline {subsection}{\numberline {8.3}Relazioni tra Attori e tra Casi d'Uso}{36}{}%
+\contentsline {subsubsection}{\numberline {8.3.1}Generalizzazione di Attori}{36}{}%
+\contentsline {subsection}{\numberline {8.4}Relazioni tra Casi d'Uso}{36}{}%
+\contentsline {subsubsection}{\numberline {8.4.1}Generalizzazione tra Casi d'Uso}{37}{}%
+\contentsline {subsubsection}{\numberline {8.4.2}Inclusione tra Casi d'Uso}{37}{}%
+\contentsline {subsubsection}{\numberline {8.4.3}Inclusione e Generalizzazione}{37}{}%
+\contentsline {subsubsection}{\numberline {8.4.4}Estensione dei Casi d'Uso}{37}{}%
+\contentsline {subsubsection}{\numberline {8.4.5}Estensioni VS Scenari alternativi: alternative modellistiche}{37}{}%
+\contentsline {subsubsection}{\numberline {8.4.6}Errori tipici con i Casi d'Uso}{38}{}%
+\contentsline {subsubsection}{\numberline {8.4.7}Requisiti Funzionali e Casi d'Uso}{38}{}%
+\contentsline {subsubsection}{\numberline {8.4.8}Prodotto Finale}{38}{}%
+\contentsline {subsection}{\numberline {8.5}Suggerimenti per la costruzione del Diagramma dei Casi d'Uso}{38}{}%
+\contentsline {subsubsection}{\numberline {8.5.1}Definisci i Confini}{38}{}%
+\contentsline {subsubsection}{\numberline {8.5.2}Identifica Attori}{38}{}%
+\contentsline {subsubsection}{\numberline {8.5.3}Identifica i Casi d'Uso}{39}{}%
+\contentsline {subsubsection}{\numberline {8.5.4}Definisci il diagramma dei casi d'uso}{39}{}%
+\contentsline {subsubsection}{\numberline {8.5.5}Descrivi i casi d'uso}{39}{}%
+\contentsline {subsubsection}{\numberline {8.5.6}Struttura i casi d'uso}{39}{}%

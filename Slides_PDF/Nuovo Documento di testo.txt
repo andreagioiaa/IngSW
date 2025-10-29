@@ -1,0 +1,81 @@
+\section{Introduzione UML}
+
+Motivazione
+I sistemi software moderni tendono a crescere e a diventare sempre più complessi.
+- è impensabile comprendere sistemi complessi direttamente dal codice
+- il codice spesso è incomprensibile
+- necessità di forme di rappresentazione più astratte per discutere le scelte di progetto
+- la modellazione è un modo per gestire la complessità del software
+
+Modellazione di un sistema
+Processo che sviluppa modelli astratti di un sistema, non una rappresentazione alternativa:
+- la rappresentazione di un sistema mantiene tutte le informazioni sull'entità che rappresenta
+- un'astrazione semplifica deliberatamente un sistema evidenziandone le caratteristiche salienti, eventualmente tralasciando altre caratteristiche
+Ad un sistema possono corrispondere più modelli:
+- ogni modello rappresenta una differente vista o prospettiva del sistema
+Si possono utilizzare notazioni grafiche o notazioni matematiche
+
+Terminologia
+Modello: astrazione che descrive un sistema o sottosistema.
+Vista (o prospettiva): descrizione di aspetti specifici di un sistema da una certa prospettiva, in cui si omettono dettagli non rilevanti per tale prospettiva
+Notazione: insieme di elementi grafici o testuali e regole per rappresentare le viste.
+Diverse viste/modelli possono sovrapporsi.
+
+Linguaggi di Modellazione
+Per descrivere i modelli si utilizzano linguaggi di modellazione, in passato, diversi linguaggi di modellazione erano usati da supporto delle metodologie che si applicavano nelle varie fasi del processo di sviluppo software.
+Negli ultimi anni il linguaggio UML si sta affermando come linguaggio unificato che possa essere utilizzato in tutte le attività di modellazione. Esistono anche altri linguaggi come SysML (variante per sistemi complessi, es. IoT)
+
+Storia UML
+
+UML: Notazioni + Meta-Modello
+UML è una famiglia di notazioni grafiche che si basano su un singolo meta-modello (modello che definisce i concetti stessi del linguaggio di modellazione, indica secondo quali regole sia possibile costruite modelli UML).
+UML non è una metodologia: ha l'obiettivo di fornire un supporto al processo di sviluppo software.
+Può essere usato all'interno dei processi di sviluppo che adottano le proprie metodologie.
+
+Regole Prescrittive e Descrittive
+Le regole UML possono essere considerate sia prescrittive che descrittive:
+- regole prescrittive: regole stabilite da organismi standardizzati che definiscono precisamente lessico, sintassi e semantica del linguaggio. Fondamentali quando UML è usato come linguaggio di programmazione.
+- regole descrittive: stabilite per convenzione comune, possono essere meglio comprese guardando come UML viene usato nella pratica da un'organizzazione
+Bisogna conoscere le convenzioni particolari della specifica organizzazione e del singolo progetto, anche se al di fuori dello standard.
+
+UML
+Secondo Fowler e Mellor, UML può essere usato:
+A - Come bozza (sketch): per tracciare un modello informale di sistema da realizzare o per descrivere un sistema esistente
+B - Come progetto dettagliato (blueprint): per realizzare un modello completo della soluzione architetturale del sistema
+C - Come linguaggio di programmazione: in grado di modellare in maniera completa e precisa il sistema software
+
+Bozze: Espressività > Completezza
+Quando si realizza una bozza, lo scopo è aiutare la comunicazione e la discussione delle idee, esplorando le soluzioni alternative, i diagrammi non devono essere esaustivi e definire tutti gli aspetti del codice.
+Le bozze sono disegnate in poco tempo e in modo collaborativo, non rispettando tutte le regole formali dello standard.
+
+Progetto Dettagliato: Espressività + Completezza
+Quando si realizza o si deve capire un progetto, lo scopo è aiutare la comprensione e la completezza.
+Il progettista sviluppa un modello di progetto che lo sviluppatore dovrà realizzare, salvandolo in file condivisi.
+La completezza e non ambiguità del modello aiutano il programmatore, guidato dal modello e non dovrà avere aspetti ambigui da interpretare.
+
+UML come linguaggio di programmazione
+L'approccio MDA (Model Driven Architecture) esplora la possibilità di usare UML come linguaggio di programmazione, si vorrebbe stabilire una sintassi e semantica precisa per UML che portino alla generazione di codice eseguibile rappresentativo del modello.
+La sfida risiede nel modellare precisamente anche la logica del progetto, il vantaggio consiste nel generare codice per diverse piattaforme target da un modello indipendente dalla piattaforma.
+
+Informazioni soppresse
+L'assenza di qualche informazione in un diagramma UML non significa che tale informazione non esista, alcuni aspetti del problema potrebbero essere assenti da un diagramma perché non ancora trattati nella fase in cui è stato tracciato il diagramma.
+
+Tipi di diagramma UML
+UML 2 possiede 13 diversi tipi di diagrammi ufficiali, appartenenti a due categorie:
+- diagrammi strutturali: modellano l'organizzazione del sistema
+- diagrammi comportamentali: modellano il comportamento e le interazioni tra le entità del sistema
+Questi diagrammi rappresentano i deliverables di diversi fasi del ciclo di vita del software, tra cui attività di analisi dei requisiti e attività di progettazione, sia di alto che di basso livello.
+
+Prospettive UML
+Prospettiva esterna: modellati in contesto operativo del sistema
+Prospettiva delle interazioni: sono modellate le interazioni tra il contesto e il sistema o tra diverse componenti del sistema
+Prospettiva strutturale: sono modellate l'organizzazione del sistema e/o la struttura dei dati
+Prospettiva comportamentale: sono modellati il comportamento dinamico del sistema e come esso risponde agli eventi
+
+Integrare UML nel processo di sviluppo
+UML può essere usato in diverse fasi del processo di sviluppo
+- analisi dei requisiti: facilita la deduzione dei requisiti, la notazione non dev'essere troppo complessa per favorire la comunicazione con il cliente
+- progettazione: modelli più tecnici e dettagliati per descrivere il sistema agli ingegneri che lo devono implementare
+- documentazione (dopo implementazione): modelli rendono più semplice la descrizione di parti complesse o convogliano messaggi in maniera intuitiva immediata
+- comprensione di software pre-esistente: evoluzione o reverse-engineering
+Nei processi iterativi ogni iterazione arricchisse i diagrammi delle iterazioni precedenti. 
