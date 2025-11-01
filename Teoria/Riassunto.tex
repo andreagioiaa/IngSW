@@ -1,0 +1,1538 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}    
+\usepackage[T1]{fontenc}       
+\usepackage[italian]{babel}    
+\usepackage{graphicx}
+\usepackage{lmodern}  
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{booktabs}
+% Impostazioni margini
+\geometry{top=2.5cm, bottom=2.5cm, left=2cm, right=2cm}
+% Impostazioni indice
+\usepackage[hidelinks]{hyperref}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{enumitem}
+\setlist[itemize]{nosep} % Rende tutti gli itemize compatti
+\setlist[enumerate]{nosep} % Rende tutti gli enumerate compatti
+
+\title{Riassunto di Machine Learning}
+\author{Alessio Nicodemo}
+\date{Anno Accademico 2024/2025}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1.5cm}
+    
+    {\scshape\LARGE Università degli Studi di Udine \par}
+    \vspace{0.4cm}
+    
+    {\scshape\Large Dipartimento di Scienze Matematiche, Informatiche e Fisiche\par}
+    \vspace{0.4cm}
+    {\large IBML - Internet of Things, Big Data, Machine Learning \par}
+    \vspace{0.4cm}
+    
+    \vspace{1.5cm}
+    \includegraphics[width=0.25\textwidth]{immagini/Logo.pdf}\par
+    \vspace{1cm}
+    
+    \rule{\textwidth}{0.5pt}\vspace{0.4cm}
+    {\Huge\bfseries Riassunto di\\ Ingegneria del Software\par}
+    \vspace{0.4cm}
+    \rule{\textwidth}{0.5pt}
+    \vfill
+
+    {\large Corso e materiale del docente: Vincenzo Riccio\par}
+    \vspace{0.4cm}
+    {\large Realizzato da: Alessio Nicodemo\par}
+    \vspace{0.4cm}
+    {\large A.A. 2025/2026 \par}
+    
+    \vspace*{1cm}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Concetti fondamentali}
+
+\subsection{Cos'è il software?}
+
+Il \textbf{software} è un termine che indica l’insieme dei programmi per computer e la relativa documentazione (modelli di progetto, manuali utente, siti web di supporto, ...).
+\vspace{0.3cm}
+
+\noindent Le economie di tutte le nazioni industrializzate dipendono dal software e sempre più sistemi sono controllati dal software (es. sistema sanitario).
+
+\subsubsection{Tipologie di software}
+
+\paragraph{Software generico}
+\begin{itemize}
+    \item Software prodotto autonomamente da un’organizzazione per soddisfare le necessità di vari clienti 
+    (ad esempio, applicazioni per smartphone disponibili negli store ufficiali).
+    \item Il produttore ha il controllo completo sulle specifiche del software.
+\end{itemize}
+
+\paragraph{Software su richiesta}
+\begin{itemize}
+    \item Software sviluppato da un’organizzazione su commissione di un cliente specifico 
+    (ad esempio, sistemi di controllo per dispositivi elettronici).
+    \item Il produttore deve attenersi alle specifiche fornite dal cliente.
+\end{itemize}
+
+\subsubsection{Complessità e costi del software}
+
+Il software può diventare estremamente \textbf{complesso}, \textbf{difficile} da capire e \textbf{costoso} da modificare (es. in presenza di difetti).
+La crescita della complessità richiede sempre \textbf{meno tempo} per lo sviluppo software.
+Il mercato in continua evoluzione richiede un rilascio rapido dei sistemi.
+Questo miglioramento è legato all’applicazione di approcci dell’\textbf{Ingegneria del Software}.
+
+\subsubsection{Sviluppo Professionale di software di qualità} 
+
+\paragraph{Software personale}
+\begin{itemize}
+    \item Software prodotto per se stessi, difficilmente riusato in futuro da altri utenti.
+    \item Non necessario scrivere una documentazione.
+    \item Non necessario raggiungere alti livelli di qualità basta che funzioni.
+\end{itemize}
+
+\paragraph{Software professionale}
+\begin{itemize}
+    \item Software sarà usato da altre persone diverse dai propri sviluppatori.
+    \item Sviluppo in team e probabilmente il software sarà utilizzato anche da altri sviluppatori.
+    \item Il software deve possedere caratteristiche di qualità.
+\end{itemize}
+
+\subsubsection{Qualità del software}
+
+Un \textbf{software di qualità} non deve solo fornire le funzionalità richieste, ma anche garantire prestazioni adeguate e conformi alle aspettative dell’utente.
+
+\paragraph{Caratteristiche qualitative principali}
+\begin{itemize}
+    \item \textbf{Accettabilità}: deve essere accettato dagli utenti, risultando comprensibile, usabile e compatibile con gli altri sistemi utilizzati.
+    \item \textbf{Fidatezza e protezione}: non deve causare danni fisici o economici in caso di malfunzionamento e deve essere sicuro contro accessi o modifiche non autorizzate.
+    \item \textbf{Efficienza}: ottimizzazione delle risorse del sistema, evitando sprechi.
+    \item \textbf{Mantenibilità}: deve poter evolvere nel tempo per rispondere alle nuove esigenze dei clienti o del mercato.
+\end{itemize}
+
+\noindent La qualità è relativa: le sue metriche dipendono dall'\textbf{applicazione/contesto}.
+
+\subsection{Ingegneria del software}
+La \textbf{Crisi del Software} venne discussa per la prima volta nel \textbf{1969} in Germania.
+
+\paragraph{Motivazioni della crisi}
+\begin{itemize}
+    \item I software risultavano troppo \textbf{complessi}, \textbf{costosi}, \textbf{inaffidabili} e \textbf{rilasciati in ritardo}.
+    \item I \textbf{costi del software} iniziarono a superare quelli dell'\textbf{hardware}.
+    \item I \textbf{costi di manutenzione} divennero maggiori rispetto a quelli di sviluppo.
+\end{itemize}
+
+\noindent \textbf{Obbiettivo:} sviluppare software \textbf{facilmente manutenibile} e \textbf{vantaggioso nei costi}.
+
+\noindent \textbf{Soluzione:} adottare approcci ingegneristici alla produzione del software.
+
+\vspace{0.4cm}
+
+\noindent L'\textbf{ingegneria del software} è una disciplina ingegneristica che riguarda tutti gli aspetti della produzione del software.
+
+\subsubsection{Ingegneria del Software: tra Ingegneria e Informatica}
+
+L'\textbf{Ingegneria del Software (IS)} è una disciplina ingegneristica che integra le competenze informatiche per affrontare i problemi pratici della produzione di software. Supporta lo sviluppo di software professionale, occupandosi di tutte le fasi della produzione, dalla \textbf{specifica} e \textbf{progettazione} fino a \textbf{evoluzione} e \textbf{manutenzione} dei programmi in uso.
+
+\vspace{0.4cm}
+
+\noindent A differenza della semplice programmazione, l'IS richiede il rispetto di vincoli organizzativi e di budget, combinando un approccio \textbf{sistematico e organizzato} (processo software) con \textbf{capacità creative} nella scelta dei metodi più adatti tra le possibili alternative. Spesso sono necessari compromessi per conciliare vincoli tecnici, temporali ed economici.
+
+\newpage
+
+\subsection{Processi Software}
+I \textbf{processi software} sono un insieme di attività che porta alla creazione o all’evoluzione di un prodotto software.
+Ciascun processo è composto da attività fondamentali e comprendono:
+\begin{itemize}
+    \item \textbf{Acquisizione, analisi e specifica dei requisiti}: definizione di funzionalità e vincoli operativi del SW.
+    \item \textbf{Progettazione e sviluppo}: progettazione e programmazione del SW.
+    \item \textbf{Verifica e validazione}: controllo che il software soddisfi le richieste del cliente.
+    \item \textbf{Evoluzione}: adattamento del software ai cambiamenti dei requisiti o del mercato.
+\end{itemize}
+
+\noindent Lo \textbf{studio di fattibilità} può essere un altra attività fondamentale, preliminare al processo ed è rapida e poco costosa.
+Valuta la \textbf{fattibilità tecnica}, \textbf{economica} e \textbf{di mercato} del progetto.
+
+
+\paragraph{No Free Lunch :}
+Non esiste una soluzione universale per tutti i tipi di software; ogni progetto richiede un processo specifico, pur condividendo le attività fondamentali.
+
+\subsubsection{Metodi e strumenti}
+\begin{itemize}
+    \item \textbf{Metodi}: approcci strutturati per sviluppare software di qualità rispettando tempi e costi.
+    \item \textbf{Strumenti}: software di supporto alle attività del processo (analisi, modellazione, debugging, testing, ecc.).
+\end{itemize}
+
+\subsubsection{Sfide dei processi software}
+\begin{itemize}
+    \item \textbf{Diversità}: adattamento a dispositivi e piattaforme eterogenee.
+    \item \textbf{Consegna}: rilascio rapido in risposta ai cambiamenti tecnologici.
+    \item \textbf{Fiducia}: garantire affidabilità e protezione dei dati.
+    \item \textbf{Scala}: distribuire il software su sistemi diversi mantenendo qualità e prestazioni.
+\end{itemize}
+
+\paragraph{Principi fondamentali}
+\begin{itemize}
+    \item Metodi, tecniche e strumenti variano in base a software, all’organizzazione e al team.
+    \item Non esistono metodi universali applicabili a tutti i software o contesti.
+    \item I concetti fondamentali sono indipendenti dal linguaggio di programmazione.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\noindent Il processo deve essere \textbf{chiaro}, ossia ben definito e compreso da tutti i membri del team.
+Deve risultare \textbf{affidabile}, sicuro e usare le risorse in modo efficiente.
+
+\noindent Per sviluppare sistemi utili, rispettando tempi e costi, è essenziale comprendere i \textbf{requisiti} e \textbf{riutilizzare} i componenti esistenti.
+
+
+\paragraph{Modello di processo software :}
+Rappresentazione semplificata e astratta che descrive l'intero ciclo di vita del software.
+
+\section{Processi software: attività fondamentali}
+
+\subsection{Code and fix}
+Approccio alla produzione di software che consiste nello \textbf{scrivere codice e aggiustarlo} per correggere errori, migliorare e/o raggiungere funzionalità.
+\textbf{Limitato} in sistemi di grandi dimensioni a cui lavorano team numerosi, rendendo necessari metodi di sviluppo più organizzati.
+
+\subsection{Acquisizione, analisi e specifica dei requisiti}
+
+Questa attività stabilisce \textbf{cosa} il software dovrà fare, senza definire \textbf{come} dovrà farlo.  
+Serve a identificare e descrivere le funzionalità e le qualità richieste, tramite interazione con il committente.
+Le decisioni prese non devono vincolare le fasi successive di progettazione e implementazione.
+Errori in questa fase comportano alti costi di correzione nelle fasi successive.
+
+
+\paragraph{Ingegneria dei requisiti}
+Disciplina che sviluppa metodi per raccogliere, documentare, classificare e analizzare i requisiti.  
+Comprende tre sotto-attività principali:
+
+\begin{enumerate}
+    \item \textbf{Deduzione e analisi dei requisiti:} comprensione delle necessità e delle aspettative degli \textit{stakeholder}, tramite osservazione di sistemi esistenti, discussioni e sviluppo di modelli o prototipi per chiarire i bisogni.
+    \item \textbf{Specifica dei requisiti:} traduzione delle informazioni raccolte in un insieme strutturato di requisiti.  
+    Si distinguono:
+    \begin{itemize}
+        \item \textbf{Requisiti utente}: proposizioni astratte rivolte a clienti e utenti finali;
+        \item \textbf{Requisiti di sistema}: descrizioni dettagliate di funzionalità e caratteristiche per gli sviluppatori.
+    \end{itemize}
+    \item \textbf{Convalida dei requisiti:} verifica che i requisiti siano realistici, coerenti e completi.  
+    Eventuali errori portano a revisioni del documento dei requisiti.
+\end{enumerate}
+
+\paragraph{Documento dei requisiti}
+Al termine della convalida si produce un documento che:
+\begin{itemize}
+    \item definisce l’insieme dei requisiti del sistema;
+    \item deve essere chiaro, preciso, coerente, non ambiguo e modificabile;
+    \item può variare in dettaglio e formalità a seconda del processo adottato;
+    \item include un piano di test preliminare del sistema.
+\end{itemize}
+
+\noindent Le attività di deduzione, specifica e convalida sono \textbf{intrecciate}: l’analisi dei requisiti può continuare anche durante lo sviluppo, specialmente nei processi \textbf{agili}, evolvendo nel tempo.
+
+\subsection{Progettazione e sviluppo}
+
+Questa attività converte le specifiche dei requisiti in un \textbf{sistema eseguibile} da consegnare al cliente.  
+Si compone di due fasi principali:
+
+\begin{itemize}
+    \item \textbf{Progettazione}: definizione della struttura del software che realizzi le specifiche, in modo formale o informale.
+    \item \textbf{Sviluppo}: implementazione dei componenti definiti nel progetto.
+\end{itemize}
+
+\noindent Nei \textbf{processi agili}, progettazione e sviluppo sono spesso intrecciati, mentre nei \textbf{processi plan-driven} (ad es. per software critici) lo sviluppo segue rigidamente la progettazione.
+
+\subsubsection{Fase di progettazione}
+Le attività di progettazione sono \textbf{interdipendenti} e si sviluppano per iterazioni successive, aggiungendo dettagli o correggendo difetti.
+Il progetto evolve nel tempo: nuove informazioni possono modificare scelte progettuali precedenti.
+
+\paragraph{Progettazione della piattaforma}
+Il software deve integrarsi con la \textbf{piattaforma software} in cui verrà eseguito (es. sistema operativo, database, altre applicazioni).
+Le informazioni sulla piattaforma sono essenziali per definire come integrare il prodotto nell’ambiente operativo.
+
+\paragraph{Progettazione dell’architettura}
+Identifica la \textbf{struttura complessiva del sistema}, i componenti principali e le loro relazioni.
+Rappresenta il \textbf{progetto di alto livello} del software.
+
+\paragraph{Progettazione delle interfacce}
+Definisce come i componenti comunicano tra loro, senza esporre i dettagli interni di implementazione.
+Le specifiche delle interfacce devono essere \textbf{chiare e non ambigue}.
+Consente lo sviluppo separato dei componenti rispettando la compatibilità.
+
+\paragraph{Progettazione dei componenti}
+Si riusano componenti esistenti quando possibile, altrimenti vengono progettati nuovi componenti.
+La descrizione progettuale lascia spesso ai programmatori libertà nei dettagli dell’implementazione.
+Rappresenta il \textbf{progetto di dettaglio}.
+
+\paragraph{Risultato della progettazione}
+Il risultato di questa fase è un \textbf{progetto del software}, più o meno formale, che descrive:
+\begin{itemize}
+    \item la struttura del sistema da implementare;
+    \item i modelli e le strutture di dati utilizzati;
+    \item le interfacce tra i componenti.
+\end{itemize}
+
+\subsubsection{Fase di sviluppo}
+
+Consiste nell’implementazione del progetto attraverso la programmazione dei componenti definiti.  
+È un’attività fortemente dipendente dalle competenze e dallo stile dei singoli programmatori, quindi non segue processi rigidi o standard universali.  
+Tuttavia, nelle organizzazioni professionali, può essere regolata da \textbf{standard aziendali}, convenzioni di codifica e pratiche condivise per garantire coerenza, leggibilità e qualità del codice.
+
+\subsection{Verifica e validazione (V\&V)}
+
+La fase di \textbf{verifica e validazione} ha l’obiettivo di dimostrare che il software:
+\begin{itemize}
+    \item \textbf{Verifica:} rispetta le specifiche stabilite;
+    \item \textbf{Validazione:} soddisfa le aspettative e le necessità del cliente.
+\end{itemize}
+
+\noindent Le attività di V\&V possono includere ispezioni, revisioni e test, eseguite in diversi stadi del processo, dalla definizione dei requisiti fino all’implementazione.  
+La tecnica più comune è il \textbf{testing}, che consiste nell’eseguire il sistema utilizzando dati di prova derivati dalle specifiche.
+
+\paragraph{Test dei componenti}
+Il \textbf{componente} è l’unità fondamentale del software (funzione, classe, modulo o gruppo di essi).
+Ogni componente viene testato \textbf{isolatamente}, per verificare il corretto funzionamento indipendentemente dagli altri.
+
+\paragraph{Test del sistema}
+Mira a testare il \textbf{sistema completo}, ma nei progetti complessi può essere necessario integrare progressivamente i componenti in sottosistemi.
+Serve a verificare la \textbf{conformità ai requisiti funzionali e non funzionali}.
+Può rilevare malfunzionamenti dovuti a interazioni impreviste tra componenti corretti.
+
+\paragraph{Test del cliente}
+Il sistema è testato con \textbf{dati reali del cliente}, non simulati.
+Permette di individuare eventuali problemi nei requisiti o prestazioni insoddisfacenti.
+Determina se il software \textbf{soddisfa effettivamente le esigenze del cliente}.
+
+\paragraph{Testing iterativo}
+E' un processo \textbf{iterativo}: implica la ripetizione delle fasi di test quando si scoprono difetti, poiché alcuni errori emergono solo durante l'integrazione o l'uso reale.
+
+\subsection{Evoluzione}
+
+L’attività di \textbf{evoluzione} riguarda la modifica e l’aggiornamento continuo del software dopo il suo rilascio.  
+Oggi, sempre meno sistemi software sono sviluppati da zero: la maggior parte dei prodotti è soggetta a riuso, manutenzione ed estensione nel tempo.
+
+\begin{itemize}
+    \item Il software viene modificato per adattarsi ai \textbf{cambiamenti dei requisiti} o dell’ambiente operativo.
+    \item È la \textbf{fase più lunga} del ciclo di vita del software.
+    \item Le attività di evoluzione includono:
+    \begin{itemize}
+        \item \textbf{Correzione} di difetti non rilevati in precedenza;
+        \item \textbf{Miglioramento} della qualità o delle prestazioni;
+        \item \textbf{Adattamento} del sistema a nuovi contesti, tecnologie o esigenze del mercato.
+    \end{itemize}
+\end{itemize}
+
+\noindent Questa fase garantisce la \textbf{sopravvivenza e la rilevanza} del software nel tempo, mantenendolo allineato ai bisogni degli utenti e alle evoluzioni tecnologiche.
+
+\newpage
+
+\section{Modelli di processi software}
+Il \textbf{modello di processo SW} o \textbf{modello del ciclo di vita del SW}, 
+è una caratterizzazione descrittiva o prescrittiva di come un sistema SW viene o dovrebbe essere sviluppato.
+
+\vspace{0.4cm}
+
+\noindent Si tratta di \textbf{descrizioni astratte di alto livello} che possono essere utilizzate per spiegare i diversi approcci allo sviluppo e che forniscono strutture di processo da estendere e adattare per creare processi concreti e specifici adatti a un particolare progetto o contesto organizzativo.
+
+\subsection{Punti di vista del modello}
+Un processo software può essere descritto da diversi \textbf{punti di vista}:
+\begin{itemize}
+    \item \textbf{Architetturale}: mostra sequenza e organizzazione delle attività (approccio del corso);
+    \item \textbf{Data-flow}: evidenzia le trasformazioni dei dati effettuate dalle diverse attività;
+    \item \textbf{Role/action}: descrive i ruoli coinvolti nel processo e le rispettive responsabilità.
+\end{itemize}
+
+\subsection{Descrizione del processo software}
+La descrizione di un processo include:
+\begin{itemize}
+    \item le \textbf{attività} da svolgere e il loro ordine;
+    \item i \textbf{prodotti} generati da ciascuna attività;
+    \item i \textbf{ruoli} e le \textbf{responsabilità} delle persone coinvolte;
+    \item le \textbf{pre- e post-condizioni}, ovvero i criteri che devono essere soddisfatti prima e dopo ogni attività per consentire l’avanzamento del processo.
+\end{itemize}
+
+\subsection{Scelta del modello di processo}
+Esistono diversi modelli di processo, ognuno adatto a differenti tipologie di software e contesti organizzativi.  
+In generale, si distinguono due grandi categorie:
+\begin{itemize}
+    \item \textbf{Modelli plan-driven}: caratterizzati da pianificazione e documentazione rigorosa;
+    \item \textbf{Modelli agili}: basati su iterazioni brevi, adattabilità e collaborazione.
+\end{itemize}
+
+\noindent Nella pratica, per lo sviluppo di sistemi complessi, è spesso necessario un \textbf{compromesso} tra approcci plan-driven e agili.
+
+\subsection{Modello a cascata (Waterfall Model)}
+
+Il \textbf{modello a cascata} è un processo \textbf{plan-driven} e \textbf{document-centric}, in cui le fasi di sviluppo sono eseguite in sequenza e ogni fase produce documenti che costituiscono gli \textbf{input} della successiva.  
+Tutte le attività devono essere pianificate prima dell’avvio del progetto, e la fase successiva inizia solo dopo il completamento e l’approvazione della precedente.
+
+\paragraph{Caratteristiche principali}
+\begin{itemize}
+    \item Ogni fase riflette direttamente una delle \textbf{attività fondamentali} di sviluppo (requisiti, progettazione, implementazione, verifica, manutenzione).
+    \item Gli output di una fase vengono “\textbf{congelati}”: non sono modificabili se non attraverso un processo formale di revisione.
+    \item La fine di ogni fase rappresenta una \textbf{milestone}, utile a monitorare l’avanzamento del progetto.
+    \item È un processo \textbf{monolitico}: il cliente può vedere il prodotto al termine di tutte le fasi.
+    \item Nella pratica, sono necessari feedback tra fasi, anche se il modello è concettualmente lineare.
+\end{itemize}
+
+\subsubsection{Vantaggi e svantaggi in generale}
+
+\paragraph{Vantaggi:}
+\begin{itemize}
+    \item Fasi e obiettivi chiaramente definiti.
+    \item Output ben identificati e verificabili.
+\end{itemize}
+
+\paragraph{Svantaggi:}
+\begin{itemize}
+    \item Richiede \textbf{requisiti stabili e completi} fin dall’inizio, condizione spesso irrealistica nello sviluppo software moderno.
+    \item Genera eccessiva documentazione rispetto alle reali necessità.
+    \item \textbf{Poco flessibile}: difficile gestire modifiche o nuove richieste durante lo sviluppo.
+    \item Gli errori nei requisiti emergono solo alla fine, con costi di correzione elevati.
+    \item Non adatto a progetti con requisiti variabili, piccoli team o contesti agili in cui la comunicazione è informale. 
+\end{itemize}
+
+\paragraph{Applicabilità:}
+\begin{itemize}
+    \item Adatto a progetti che richiedono documentazione formale e controllo rigoroso.
+    \item Adatto a progetti con requisiti NON variabili, grandi team o contesti lenti in cui la comunicazione è formale. 
+\end{itemize}
+
+\subsubsection{Modello a cascata con retroazione}
+
+Il \textbf{modello a cascata con retroazione} è una variante del modello a cascata tradizionale, che introduce \textbf{meccanismi di feedback} tra le fasi del processo.  
+Nella pratica, infatti, le attività non sono perfettamente sequenziali, ma si \textbf{sovrappongono} e si scambiano informazioni.
+
+\vspace{0.4cm}
+
+\noindent Ogni fase include una verifica dei risultati prodotti, con la possibilità di ritornare alla fase precedente per correggere eventuali errori.
+I feedback permettono di \textbf{rilevare problemi in anticipo}, evitando di scoprirli solo al termine del processo.
+La correzione comporta la revisione dei documenti o degli output della fase precedente.
+
+\vspace{0.4cm}
+
+\noindent Questo modello \textbf{rende meno rigido} il modello a cascata classico, consentendo modifiche durante lo sviluppo, 
+ma non è flessibile rispetto a cambiamenti significativi in qualunque momento del progetto. Viene usato quando si prevede una \textbf{limitata variabilità dei requisiti}.
+
+\vspace{0.4cm}
+
+\subsubsection{Estensione del modello a cascata: Modello a V}
+
+Il \textbf{modello a V} estende il modello a cascata collegando ogni fase di \textbf{progettazione} con una corrispondente fase di \textbf{verifica e validazione (V\&V)}.
+
+\begin{itemize}
+    \item Le attività del ramo superiore (progettazione) sono associate a quelle del ramo inferiore (test e validazione).
+    \item Per ogni fase di progetto, viene definito un \textbf{piano di test}, che guida le attività di V\&V.
+    \item La V\&V sono eseguite da un \textbf{team indipendente} rispetto a quello di sviluppo.
+    \item In caso di errore rilevato durante la V\&V, si rieseguono le fasi di progetto collegate.
+    \item Consente una \textbf{validazione anticipata dei requisiti}, riducendo il rischio di errori tardivi.
+\end{itemize}
+
+\noindent Il modello a V è particolarmente usato in ambiti che richiedono elevata \textbf{affidabilità e tracciabilità}, come ad esempio nello sviluppo di sistemi \textbf{automotive} o \textbf{aerospaziali}.
+
+\subsection{Modelli evolutivi}
+
+I \textbf{modelli evolutivi} sono adatti a contesti in cui i \textbf{requisiti non sono completamente chiari} fin dall’inizio del processo di sviluppo.  
+Permettono di far evolvere il sistema progressivamente attraverso cicli successivi di sviluppo e validazione.  
+I due principali modelli sono:
+\begin{itemize}
+    \item \textbf{Modello a sviluppo/consegna incrementale} (due varianti) : sviluppo ciclico con il cliente, che evolve i requisiti iniziali fino al sistema finale;
+    \item \textbf{Modello prototipale} : esplorazione dei requisiti attraverso prototipi, ideale quando questi sono inizialmente poco chiari
+\end{itemize}
+
+\subsubsection{Modello a sviluppo incrementale}
+
+Il \textbf{modello a sviluppo incrementale} si basa sull’idea di creare una \textbf{versione iniziale} del software che implementa i requisiti fondamentali, esporla agli utenti o ai loro rappresentanti, e \textbf{perfezionarla attraverso incrementi successivi} fino al sistema finale.
+
+\begin{itemize}
+    \item Le attività di \textbf{specifica}, \textbf{sviluppo} e \textbf{convalida} sono intrecciate, con rapidi feedback tra le varie fasi.
+    \item Ogni incremento aggiunge nuove funzionalità e migliora le versioni precedenti.
+    \item Solo la versione iniziale è in genere mostrata ai clienti, mentre le versioni intermedie vengono utilizzate per la verifica interna.
+    \item L’\textbf{ultimo incremento} corrisponde alla versione finale rilasciata al cliente.
+\end{itemize}
+
+\subsubsection{Modello a consegna incrementale}
+
+Nel \textbf{modello a consegna incrementale}, non è consegnato direttamente nella sua forma finale alla fine del progetto, alcuni incrementi vengono effettivamente \textbf{rilasciati e installati} presso i clienti durante lo sviluppo.  
+Fornisce un \textbf{feedback realistico} sull'uso in ambiente operativo, ma richiede agli utenti \textbf{tempo sufficiente} per testare ogni incremento.
+
+\begin{itemize}
+    \item Ogni incremento fornisce una parte delle funzionalità richieste.
+    \item I requisiti utente sono classificati per \textbf{priorità}: quelli più importanti vengono implementati per primi.
+    \item I requisiti relativi a un incremento sono \textbf{congelati} dopo la sua consegna, mentre quelli successivi possono evolvere.
+    \item Le funzionalità comuni a più requisiti dovrebbero essere individuate e implementate precocemente.
+\end{itemize}
+
+\subsubsection{Differenze principali tra consegna e sviluppo}
+\begin{itemize}
+    \item Nello \textbf{sviluppo incrementale}, solo la prima versione è valutata da rappresentanti del cliente in un ambiente di test.
+    \item Nella \textbf{consegna incrementale}, invece, ciascun incremento può essere usato dagli utenti finali nel proprio ambiente operativo, fornendo un feedback più concreto e affidabile.
+\end{itemize}
+
+\subsubsection{Vantaggi e svantaggi in generale}
+
+\paragraph{Vantaggi:}
+\begin{itemize}
+    \item Rapido feedback del cliente su versioni preliminari del software, rispetto a documenti su progetto.
+    \item Possibilità di \textbf{adattare i requisiti} prima della consegna finale, riducendo i costi di modifica.
+    \item Consegna anticipata di versioni funzionanti con le funzionalità fondamentali.
+    \item I primi incrementi aiutano a chiarire e migliorare i requisiti successivi.
+    \item Le funzionalità prioritarie vengono testate più approfonditamente.
+\end{itemize}
+
+\paragraph{Svantaggi:}
+\begin{itemize}
+    \item Scarsa \textbf{visibilità e documentazione} del processo, poiché è oneroso documentare ogni versione.
+    \item Rischio di \textbf{architettura mal strutturata} a causa dei continui cambiamenti.
+\end{itemize}
+
+\paragraph{Applicabilità:}
+\begin{itemize}
+    \item Componenti di \textbf{piccole o medie dimensioni} (es. interfacce utente).
+    \item Sistemi con \textbf{vita breve} o con requisiti soggetti a frequenti variazioni.
+\end{itemize}
+
+\subsubsection{Modello Prototipale}
+
+Il \textbf{modello prototipale} prevede la realizzazione di una versione iniziale (\textit{prototipo}) del sistema, o di una sua parte, sviluppata rapidamente per risparamiare il costo ed esplorare meglio i requisiti del cliente nelle fasi iniziali del processo di sviluppo.
+
+\begin{itemize}
+  \item È un sistema \textbf{usa e getta}: dopo la validazione, deve essere scartato poiché non rappresenta una base adeguata per lo sviluppo finale.
+  \item Realizzando le funzionalità richieste, potrebbe \textbf{non rispettare} aspetti fondamentali come le prestazioni o essere documentato correttamente.
+  \item Sviluppato in tempi brevi e con costi contenuti, privilegia la rapidità rispetto alla qualità.
+  \item È fondamentale definire \textbf{obiettivi chiari} per la prototipazione: in assenza di essi, utenti o management possono fraintendere la funzione del prototipo, compromettendone l’efficacia.
+  \item Non tutte le funzionalità del sistema finale devono essere incluse nel prototipo; è consigliabile concentrarsi sulle aree con \textbf{requisiti incerti}, per ridurre costi e tempi.
+\end{itemize}
+
+\noindent Inoltre, per una valutazione corretta:
+\begin{itemize}
+  \item Gli utenti devono essere opportunamente formati sull’uso del prototipo.
+  \item Esiste un problema di \textbf{rappresentatività}: i valutatori possono non coincidere con gli utenti finali, e l’interazione con il prototipo può differire da quella con il sistema reale.
+\end{itemize}
+
+\noindent La prototipazione può essere integrata con altri modelli di ciclo di vita:
+\begin{itemize}
+  \item Nel modello a cascata, può essere impiegata durante la fase di progettazione per valutare \textbf{opzioni alternative}.
+  \item Può essere utilizzata per \textbf{identificare, validare e raffinare i requisiti} prima dello sviluppo effettivo.
+\end{itemize}
+
+\noindent Infine, nella fase di \textbf{validazione}, si può applicare la tecnica di \textbf{Back-to-Back Testing}, confrontando il comportamento del sistema sviluppato con quello previsto dal prototipo iniziale, per verificare la coerenza tra le due versioni.
+
+\newpage
+
+\subsection{Modello Orientato al Riuso}
+
+Il \textbf{modello orientato al riuso} si basa sull’idea di sviluppare nuovi sistemi sfruttando componenti software o sistemi già esistenti, piuttosto che realizzare tutto da zero.  
+Questo approccio è supportato da framework che facilitano l’integrazione dei componenti riutilizzabili.
+
+\noindent Il riuso può riguardare:
+  \begin{itemize}
+    \item \textbf{Componenti software riutilizzabili}, progettati per essere facilmente integrati in più applicazioni.
+    \item \textbf{Sistemi COTS} (\textit{Commercial Off-The-Shelf}), ovvero prodotti software pronti all’uso e commercializzati da terzi.
+  \end{itemize}
+
+\vspace{0.4cm}
+
+\noindent Il processo si articola generalmente nelle seguenti fasi:
+\begin{enumerate}
+  \item \textbf{Definizione dei requisiti essenziali}, descritti in modo sintetico e non dettagliato.
+  \item \textbf{Ricerca e valutazione} dei componenti o sistemi già esistenti per soddisfare tali requisiti.
+  \item \textbf{Perfezionamento dei requisiti} sulla base dei componenti trovati e aggiornamento della specifica del sistema. 
+  \item \textbf{Composizione del sistema}:
+  \begin{itemize}
+    \item Se esiste un’applicazione pronta all’uso, viene configurata per creare il nuovo sistema.
+    \item Se non esiste, si integrano \textbf{componenti riutilizzabili e nuovi moduli} sviluppati appositamente.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Vantaggi e Svantaggi}
+
+\paragraph{Vantaggi}
+\begin{itemize}
+  \item Riduzione della quantità di software da sviluppare ex novo.
+  \item Diminuzione dei costi e dei rischi di progetto.
+  \item Maggiore velocità nella consegna del prodotto finale.
+\end{itemize}
+
+\paragraph{Svantaggi}
+\begin{itemize}
+  \item Possibili \textbf{compromessi sui requisiti}: il sistema finale potrebbe non soddisfare completamente le esigenze degli utenti.
+  \item \textbf{Limitato controllo sull’evoluzione dei componenti riutilizzati}, poiché aggiornamenti o nuove versioni dipendono da terze parti.
+\end{itemize}
+
+\newpage
+
+\subsection{Modello Trasformazionale}
+
+Il \textbf{modello trasformazionale} si basa sull’uso di \textbf{specifiche formali} per descrivere in modo preciso e non ambiguo i requisiti del sistema.  
+Queste specifiche, espresse tramite linguaggi formali (es. specifiche algebriche o modelli di stato), vengono successivamente trasformate in codice eseguibile,
+mantenendo la correttezza e la verifica.
+
+\vspace{0.4cm}
+
+\begin{itemize}
+  \item Le specifiche sono definite formalmente durante la fase di analisi, garantendo una \textbf{comprensione chiara e priva di ambiguità} dei requisiti.
+  \item È possibile applicare tecniche di \textbf{model checking} per verificare automaticamente la correttezza delle specifiche prima della loro trasformazione in codice.
+  \item Le specifiche vengono progressivamente trasformate in descrizioni meno astratte e più dettagliate, fino ad ottenere specifiche di basso livello direttamente eseguibili.
+  \item Le trasformazioni possono essere eseguite manualmente o con il supporto di appositi strumenti, eventualmente riutilizzando componenti già esistenti.
+\end{itemize}
+
+\subsubsection{Vantaggi e svantaggi}
+
+\paragraph{Vantaggi:}
+\begin{itemize}
+  \item Alta affidabilità del software grazie alla verifica formale e alla trasformazione controllata.
+  \item Verifica implicita della correttezza, riducendo la necessità di test successivi.
+\end{itemize}
+
+\paragraph{Svantaggi:}
+\begin{itemize}
+  \item Richiede \textbf{competenze avanzate} in linguaggi e metodi formali.
+  \item Difficile specificare formalmente tutte le parti di un sistema complesso.
+  \item Il cliente può avere difficoltà a comprendere e convalidare le specifiche formali.
+\end{itemize}
+
+\paragraph{Applicabilità:}
+\begin{itemize}
+  \item Non adatto per sistemi di grandi dimensioni o con requisiti poco strutturati.
+  \item Utilizzato soprattutto per \textbf{componenti critiche}, in cui è necessario garantire la correttezza \textit{by construction}.
+\end{itemize}
+
+\newpage
+
+\section{Sviluppo agile del software}
+
+Molti progetti software hanno requisiti \textbf{incerti} o in \textbf{continua evoluzione}.
+I modelli plan-driven, basati su pianificazione rigorosa e molta documentazione, risultano spesso troppo \textbf{rigidi e pesanti}, aumentando il rischio di \textbf{ritardi o fallimenti}.
+Sono però indispensabili per lo sviluppo di sistemi critici (come quelli aeronautici), dove servono elevato coordinamento, processi di lunga durata e manutenzione estesa nel tempo.
+Tuttavia, questi modelli si adattano poco a contesti dinamici e alla necessità di rilasci rapidi, poiché introducono un eccessivo \textbf{overhead e poca flessibilità} ai cambiamenti dei requisiti.
+
+\vspace{0.4cm}
+
+\noindent Nel contesto competitivo attuale, la \textbf{velocità di sviluppo e consegna} del software è diventata il requisito più critico per:
+
+\begin{itemize}
+\item Adattarsi rapidamente alle esigenze di committenti e utenti;
+\item Mantenere la competitività rispetto ai prodotti concorrenti.
+\end{itemize}
+
+\subsection{Metodi agili}
+
+Alla fine degli anni ’90 emergono i \textbf{metodi agili}, nati con l’obiettivo di \textbf{ridurre radicalmente i tempi di consegna} dei prodotti software, introducendo:
+\begin{itemize}
+    \item Risposta in modo \textbf{rapido e flessibile} ai cambiamenti;
+    \item Favorire una \textbf{comunicazione efficace} tra tutti gli stakeholder;
+    \item Coinvolgere il \textbf{cliente all’interno del team di lavoro} per ottenere feedback immediato.
+    \item Realizzare una \textbf{consegna incrementale e continua} del software.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\noindent Le caratteristiche fondamentali dei metodi agili:
+\begin{itemize}
+    \item \textbf{Documentazione minima:} il focus è sul codice più che sulla progettazione; non vengono prodotte specifiche dettagliate e l’overhead documentale è limitato.
+    \item \textbf{Consegna rapida e incrementale:} il sistema viene sviluppato e rilasciato in \textit{incrementi frequenti}. Gli stakeholder partecipano alla definizione e valutazione di ogni incremento, contribuendo alla pianificazione dei successivi.
+    \item \textbf{Strumenti di supporto:} vengono impiegati strumenti per automatizzare parti del processo, come ad esempio i test.
+\end{itemize}
+
+\subsubsection{Processi plan-driven e agili}
+
+\paragraph{Differenze tra i processi}
+\begin{description}
+    \item[\textbf{Plan-driven:}] Tutte le attività sono pianificate in anticipo; l’avanzamento del progetto è misurato rispetto al piano.  
+    Le fasi del processo software sono ben distinte e gli output di ciascuna fase costituiscono input per quella successiva.
+    \item[\textbf{Agili:}] La pianificazione è \textbf{incrementale e continua}.  
+    È quindi più semplice modificare il processo in risposta a cambiamenti dei requisiti del cliente o del prodotto.  
+    Requisiti, progettazione e implementazione avvengono \textbf{in parallelo}.
+\end{description}
+
+\paragraph{Coesistenza tra i processi}\mbox{}
+
+\vspace{0.2cm}
+
+\noindent Le pratiche \textit{plan-driven} e \textit{agili} possono coesistere nello stesso processo di sviluppo:
+\begin{itemize}
+    \item I processi agili possono includere documentazione di progettazione o attività pianificate quando necessario, con l’obiettivo di migliorare la comunicazione e la comprensione, pur accettando che i documenti siano incompleti.
+    \item I processi plan-driven possono essere organizzati in modo \textbf{incrementale}.
+\end{itemize}
+
+\noindent Per lo sviluppo di \textbf{grandi sistemi}, è necessario trovare un \textbf{compromesso} tra pianificazione rigorosa e flessibilità agile.
+\subsubsection{Principi Agili}
+\textbf{Coinvolgimento del cliente}: i clienti sono coinvolti in tutto il processo di sviluppo. \\
+Intervengono a ciascuna iterazione del prodotto:
+\begin{itemize}
+	\item valutano e validano l'iterazione
+	\item forniscono nuovi requisiti del sistema o propongono modifiche alle iterazioni proposte
+	\item assegnano priorità a ciascun requisito richiesto
+\end{itemize}
+\textbf{Accettare cambiamenti}
+\begin{itemize}
+	\item prodotto non pianificato rigidamente
+	\item prevedere che i requisiti possono cambiare
+\end{itemize}
+\textbf{Mantenere semplicità}
+\begin{itemize}
+	\item prodotto e processo di sviluppo devono essere il più semplice possibile
+	\item quando possibile, lavorare attivamente per eliminare le complessità dal sistema
+\end{itemize}
+\textbf{Sviluppo incrementale}
+\begin{itemize}
+	\item software sviluppato incrementalmente
+	\item cliente specifica i requisiti da includere in ciascun incremento
+\end{itemize}
+\textbf{Persone, non processi}
+\begin{itemize}
+	\item processo di sviluppo non dev'essere fortemente prescrittivo
+	\item membri del team devono essere liberi di sviluppare il software secondo i loro metodi
+	\item membri del team devono poter sviluppare il software secondo i loro metodi (evitare standard inutili)
+\end{itemize}
+\subsubsection{Applicabilità dei metodi agili}
+\begin{itemize}
+	\item Per prodotti di piccoli o medie dimensioni, prodotti personalizzati per cui c'è un chiaro impegno del cliente nell'essere coinvolto nel processo di sviluppo.
+	\item Prodotti dove ci sono pochi stakeholder e non bisogna rispettare rigidi regolamenti.
+	\item Team fisicamente vicini: le comunicazioni informali e facilitate.
+\end{itemize}
+
+\subsection{Tecniche Agili}
+\subsubsection{Metodi Agili}
+Diverse proposte di metodi agili:
+\begin{itemize}
+	\item Extreme Programming
+	\item SCRUM
+	\item Feature Driven Development
+	\item Crystal
+	\item DSDM
+\end{itemize}
+Ognuno di questi metodi propone un diverso processo, condividono gli stessi principi.
+
+\subsubsection{Extreme Programming (XP)}
+Extreme Programming (XP) è il metodo agile più conosciuto. Spinge le pratiche di sviluppo a un livello estremo e adotta un approccio fortemente iterativo, con piccoli e frequenti incrementi rilasciati al cliente.
+
+% [INSERIRE] diagramma Extreme
+
+\paragraph{Caratteristiche principali}
+\begin{itemize}
+  \item \textbf{Requisiti come storie utente}: ogni requisito è espresso come una \emph{user story}, cioè uno scenario di utilizzo del software per ottenere un risultato specifico.
+  \item \textbf{Task di sviluppo}: le storie vengono suddivise in \emph{task} più semplici, che rappresentano le unità principali dell’implementazione.
+  \item \textbf{Pianificazione flessibile}: è presente una pianificazione, ma non appesantita da documentazione eccessiva.
+  \item \textbf{Pair programming}: i programmatori lavorano in coppia e scrivono test per ogni task prima di implementare il codice.
+  \item \textbf{Testing continuo}: tutti i test devono essere superati prima dell’integrazione del nuovo codice nel sistema.
+  \item \textbf{Coinvolgimento del cliente}: il cliente partecipa attivamente allo sviluppo, valida le release, fornisce nuovi requisiti e definisce i test di accettazione.
+\end{itemize}
+
+\paragraph{Principi di XP}
+\begin{itemize}
+  \item \textbf{Coinvolgimento del cliente}: un rappresentante del cliente è presente nel team (\emph{on-site customer}).
+  \item \textbf{Accettare i cambiamenti}: ogni task completato viene immediatamente integrato nel sistema.
+  \item \textbf{Sviluppo incrementale}: frequenti rilasci che aggiungono nuove funzionalità in modo graduale.
+  \item \textbf{Mantenere la semplicità}: il progetto deve essere il più semplice possibile e il codice migliorato costantemente tramite \emph{refactoring}.
+  \item \textbf{Persone, non processi}: enfasi sulla collaborazione, proprietà collettiva del codice, orari di lavoro sostenibili e rifiuto degli straordinari eccessivi.
+\end{itemize}
+
+\subsubsection{Influenza dell'Extreme Programming}
+Nella sua forma originaria, è raramente adottato integralmente perché richiede un cambiamento radicale. Tuttavia, le sue pratiche chiave sono state integrate in altri metodi agili:
+\begin{itemize}
+  \item Storie utente
+  \item Refactoring
+  \item Sviluppo preceduto dai test
+  \item Pair programming
+\end{itemize}
+
+\subsubsection{Storie Utente}
+Le \textbf{storie utente} (o \emph{user stories}) descrivono i requisiti come scenari d’uso.  
+Sono redatte da cliente e team su \emph{story cards}, poi suddivise in \emph{task} implementativi.  
+Questi task guidano la pianificazione delle iterazioni e la stima dei costi.
+
+\paragraph{Processo}
+\begin{itemize}
+  \item Cliente e team definiscono priorità, costi e criteri di accettazione per ciascuna storia.
+  \item Le storie prioritarie vengono selezionate per la prossima versione del prodotto.
+\end{itemize}
+
+\paragraph{Pro}
+\begin{itemize}
+  \item Integrano requisiti e sviluppo, facilitando la gestione dei cambiamenti.
+  \item Maggior coinvolgimento dell’utente grazie a storie comprensibili.
+  \item Ordinabili per valore aziendale.
+  \item Facile aggiungere, modificare o scartare storie in base a nuove esigenze.
+\end{itemize}
+
+\paragraph{Contro}
+\begin{itemize}
+  \item Copertura incompleta dei requisiti difficilmente verificabile.
+  \item Possibile omissione di scenari da parte di clienti esperti.
+\end{itemize}
+
+\subsubsection{Refactoring}
+Il \textbf{refactoring} consiste nel migliorare il codice senza modificarne le funzionalità.  
+XP adotta il refactoring continuo per ridurre i costi di manutenzione futura e semplificare le modifiche.
+
+\paragraph{Caratteristiche}
+\begin{itemize}
+  \item Il team cerca proattivamente aspetti migliorabili e li ottimizza immediatamente.
+  \item Anche modifiche non urgenti possono essere effettuate per aumentare la qualità complessiva.
+  \item Un codice più chiaro riduce la necessità di documentazione e semplifica gli aggiornamenti.
+\end{itemize}
+
+\paragraph{Pro}
+\begin{itemize}
+  \item Contrasta il deterioramento del codice tipico dello sviluppo incrementale.
+  \item Esistono tool che automatizzano alcune operazioni di refactoring.
+\end{itemize}
+
+\paragraph{Contro}
+\begin{itemize}
+  \item A volte serve una revisione architetturale, più costosa del semplice refactoring.
+  \item Occorre bilanciare il tempo tra sviluppo di nuove funzionalità e miglioramento del codice.
+\end{itemize}
+
+\subsubsection{Sviluppo preceduto dai test}
+Nel metodo XP, il testing è centrale: il software viene testato dopo ogni modifica.
+
+\paragraph{Caratteristiche fondamentali}
+\begin{itemize}
+  \item \textbf{Test-driven development (TDD)}: i test vengono scritti prima del codice e ne guidano l’implementazione.
+  \item \textbf{Automazione}: i test sono automatizzati ed eseguiti a ogni rilascio.
+  \item \textbf{Coinvolgimento del cliente}: partecipa alla definizione dei test di accettazione.
+\end{itemize}
+
+\paragraph{Test-Driven Development (TDD)}
+I test, scritti come programmi eseguibili, simulano input e verificano output.  
+Ogni nuova funzionalità è aggiunta solo se tutti i test (nuovi e preesistenti) vengono superati, garantendo stabilità e coerenza del sistema.
+
+\paragraph{Automazione dei test}
+L’automatizzazione semplifica la verifica continua e riduce i tempi di validazione, aumentando l’affidabilità del software.
+
+\paragraph{Pro}
+\begin{itemize}
+  \item La scrittura dei test chiarisce i requisiti e riduce ambiguità.
+\end{itemize}
+
+\paragraph{Contro}
+\begin{itemize}
+  \item Richiede tempo e impegno costante da parte del cliente.
+  \item I test devono essere mantenuti aggiornati.
+  \item Copertura dei test non sempre completa.
+\end{itemize}
+
+\subsubsection{Pair Programming}
+Nel \textbf{pair programming}, due sviluppatori lavorano insieme sulla stessa postazione.  
+Ciò favorisce la revisione continua e la diffusione della conoscenza all’interno del team.
+
+\paragraph{Pro}
+\begin{itemize}
+  \item Aumenta il senso di proprietà collettiva del codice.
+  \item Ogni linea di codice è verificata da più persone.
+  \item Riduce i rischi dovuti al turn-over del personale.
+\end{itemize}
+
+\paragraph{Contro}
+\begin{itemize}
+  \item Può risultare meno efficiente per sviluppatori esperti che lavorano individualmente.
+\end{itemize}
+
+\subsubsection{SCRUM: Gestione Agile della Progettazione}
+\textbf{Scrum} è un framework per la gestione agile dei progetti, che offre una visibilità costante sull’avanzamento del lavoro all’interno del team.
+
+% [INSERIRE] diagramma SCRUM
+
+\paragraph{Elementi principali}
+\begin{itemize}
+  \item \textbf{Product backlog}: lista delle funzionalità da realizzare, derivate dai requisiti o dalle storie utente.
+  \item \textbf{Sprint}: ciclo di sviluppo con obiettivi e durata definiti; al termine di ogni sprint deve esserci un prodotto potenzialmente rilasciabile.
+  \item \textbf{Product owner}: definisce le priorità e aggiorna continuamente il backlog.
+  \item \textbf{Sprint backlog}: insieme dei task da realizzare durante lo sprint, assegnati dal team.
+  \item \textbf{Daily meeting}: breve riunione giornaliera per analizzare i progressi e pianificare la giornata.
+  \item \textbf{ScrumMaster}: garante del processo Scrum, modera gli incontri e rimuove gli ostacoli.
+\end{itemize}
+
+\paragraph{Ciclo di sviluppo}\mbox{}
+
+\vspace{0.2cm}
+
+\noindent All’inizio di ogni sprint vengono stabilite le priorità e assegnati i compiti.  
+Il team stima la propria velocità basandosi sulle iterazioni precedenti, per ottimizzare i tempi di consegna.  
+Alla fine di ogni sprint si tengono due riunioni:
+\begin{itemize}
+  \item \textbf{Sprint review}: per valutare il prodotto realizzato.
+  \item \textbf{Retrospective}: per analizzare il processo e introdurre miglioramenti.
+\end{itemize}
+
+\newpage
+
+\section{Tipologie di Requisiti}
+\subsection{Definizione dei requisiti}
+Definire: 
+\begin{itemize}
+	\item quali esigenze del cliente il sistema deve fornire
+	\item entro quali vincoli operativi
+\end{itemize}
+Se il sistema funziona correttamente ma non rispetta i vincoli, lo stesso non sarà di interesse per il cliente.
+
+La definizione di requisito è ampia. \\
+Descrizione di qualcosa che il sistema dovrà fare o di una proprietà o vinclo operativo che si desidera per il sistema. \\
+Tale termine può indicare diverse tipologie di descrizione:
+\begin{itemize}
+	\item sus
+\end{itemize}
+\subsubsection{Ingegneria dei Requisiti}
+Necessaria un'ampia definizione poichè un requisito può avere vari scopi nella pratica. \\
+L'\textbf{Ingegneria dei Requisiti} è il processo di ricerca, analisi, documentazione e verifica dei requisiti. \\
+Questo processo, fatto dagli ingegneri dei requisiti, si occupa di stabilire le funzionalità del software, i vincoli operativi e i vincoli per lo sviluppo, tutti insieme cristallizzati in un'appropriata documentazione. \\
+
+\subsection{Tipi di Requisiti}
+\subsubsection{Requisiti Utente}
+\textbf{Requisiti Utente}
+\begin{itemize}
+	\item frasi in linguaggio naturale relative alle funzionalità che il sistema deve fornire e i suoi vincoli operativi
+	\item generalmente sono di alto livello
+	\item descritti usando linguaggio naturale e diagrammi, comprensibili a tutti gli utenti
+\end{itemize}
+
+\subsubsection{Requisiti Sistema}
+\textbf{Requisiti di Sistema} \\
+Requisiti dal punto di vista di chi il sistema lo deve realizzare. 
+\begin{itemize}
+	\item documento strutturato che fornisce una descrizione dettagliata delle funzionalità del sistema e dei vincoli operativi
+	\item definisce cosa dovrà essere sviluppato
+	\item può far parte del contratto tra cliente e sviluppatore
+\end{itemize}
+
+\subsubsection{Lettori delle specifiche dei requisiti}
+I lettori dei requisiti utente non si occpuano del modo in cui il sistema sarà implementato e i lettori dei requisiti di sistema hanno bisogno di sapere precisamente cosa dovrà fare il sistema.
+
+\subsection{Requisiti funzionali e non funzionali}
+\textbf{Requisiti Funzionali}: descrivono cosa il sistema dovrebbe fare, come reagirà agli input in vari scenari di utilizzo. \\
+\textbf{Requisiti Non Funzionali}: sono vincoli sulle funzionalità del sistema o vincoli sul processo di sviluppo, includono anche gli standard che devono essere rispettati. \\
+
+\subsection{Requisiti Funzionali}
+Descrivno le funzionalità che dovranno essere offerte dal sistema, possono essere espressi a due livelli di astrazione: 
+\begin{itemize}
+	\item \textbf{Requisiti funzionali utente}: descrizione ad lato livello su ciò che il sistema farà
+	\item \textbf{Requisiti funzionali di sistema}: descrizione dettagliata delle funzionalità, compresi input, output ed eccezioni
+\end{itemize}
+
+\subsubsection{Imprecisioni nei requisiti}
+Requisiti imprecisi, o ambigui, possono essere interpretati in modi diversi da diversi stakeholder.
+
+\subsubsection{Completezza e Consistenza dei requisiti}
+Le specifiche dei requisiti devono essere complete e consistenti:
+\begin{itemize}
+	\item \textbf{Completezza}: tutti i requisiti richiesti dai clienti devono essere presenti
+	\item \textbf{Consistenza}: i requisiti non devono avere definizioni contraddittorie o essere in conflitto
+\end{itemize}
+Facile commettere errori o omissioni, soprattutto per sistemi complessi e di grandi dimensioni.
+
+\subsection{Requisiti Non Funzionali}
+Non riguardano direttamente le funzionalità offerte dal sistema, definiscono le proprietà e i vincoli del sistema e i vincoli del processo di sviluppo.
+\begin{itemize}
+	\item \textbf{Proprietà del sistema} ()
+	\item \textbf{Vincoli del sistema} () 
+	\item \textbf{Vincoli del processo di sviluppo} ()
+\end{itemize}
+
+Possono essere anche più critici dei requisiti funzionali, se non sono soddisfatti il sistema potrebbe rivelarsi inutilizzabile. \\
+Risulta difficile identificare quali componenti di sistema implementano specifici requisiti non funzionali. \\
+Possono influire sull'intera architettura del sistema e non sui singoli componenti. \\
+Un singolo requisito non funzionale può generare numerosi requisiti funzionali. 
+
+\subsubsection{Tipi di requisiti non funzionali}
+\textbf{Requisiti del prodotto}
+\begin{itemize}
+	\item derivano dalle caratteristiche richieste al software
+	\item specificano il comportamento del prodotto (usabilità, efficienza, prestazioni)
+\end{itemize}
+\textbf{Requisiti organizzativi}
+\begin{itemize}
+	\item derivano da politiche e procedure dell'organizzazione che sviluppa il software e del cliente
+\end{itemize}
+\textbf{Requisiti esterni}
+\begin{itemize}
+		\item tutti i requisiti derivano da fattori esterni al sistema e al suo processo di sviluppo
+\end{itemize}
+
+\subsection{Verificabilità dei Requisiti}
+I requisiti non funzionali possono essere difficili da definire precisamente, quindi difficili da verificare. \\
+Il cliente li specifica come \textbf{obiettivi} generici/vaghi. \\
+I requisiti devono essere \textbf{verificabili}: \\
+\begin{itemize}
+	\item bisognerebbe descrivere i requisiti non funzionali quantitativamente, in modo che possano essere verificati in maniera oggettiva
+	\item il requisito deve contenere qualche misura oggettivamente verificabile
+\end{itemize}
+
+\noindent I requisiti non funzionali possono essere in contraddizione tra loro o con requisiti funzionali, specialmente in sistemi complessi, in questi casi è necessario trovare un compromesso (trade-off).
+
+\subsection{Requisiti di Dominio}
+Arrivano dal dominio applicativo specifico di utilizzo, provenienti dagli esperti del dominio (navale, aereo, ...), possono essere funzionali o non funzionali. \\
+\underline{Problema}: l'esperto di dominio potrebbe tralasciare delle ovvietà che per l'ingegnere, però, non lo sono.	 Ci dev'essere un passaggio di conoscenza adeguato.
+
+\subsubsection{Problemi dei Requisiti di Dominio}
+\textbf{Comprensibilità}
+\begin{itemize}
+	\item tendenzialmente espressi in linguaggio specializzato del dominio
+	\item possono far riferimento a concetti specifici del dominio
+	\item potrebbe non essere immediatamente comprensibile agli ingegneri software
+\end{itemize}
+
+\textbf{Esplicitazione}
+\begin{itemize}
+	\item gli specialisti del dominio conoscono così bene il dominio stesso, da lasciare fuori dai requisiti che a loro sembrano ovvie
+\end{itemize}
+
+\subsection{Ingegneria dei Requisiti}
+L'ingegneria dei requisiti è formata da tre attività chiave:
+\begin{enumerate}
+	\item 	\textbf{Deduzione e analisi dei requisiti}: comprensione dei requisiti tramite l'interazione con gli stakeholder
+	\item \textbf{Specifica dei requisiti}: traduzione dei requisiti in specifiche in un formato coerente
+	\item \textbf{Convalida dei requisiti}: controllo che i requisiti corrispondano alle richieste del cliente
+\end{enumerate}
+
+\subsubsection{Modello Sequenziale}
+%[AGGIUNGERE} - diagramma Modello Sequenziale (slide 36 - 5_req.pdf)
+Le attività non sono per forza sequenziali come mostrato nel diagramma.
+
+\subsubsection{Modello a Spirale}
+%[AGGIUNGERE} - diagramma Modello a Spirale (slide 37 - 5_req.pdf)
+Sono a spirale perchè cresce la conoscenza, si abbassa il rischio e cresce il valore del software.  \\
+Possibile prima definire i requisiti in maniera generale, poi i requisiti utente e infine i requisiti di sistema. 
+
+\newpage
+
+\section{Analisi, Specifica e Convalida dei Requisiti}
+
+\subsection{Deduzione e Analisi dei Requisiti}
+\textbf{Stakeholder}: sono gli individui che hanno interesse nel progetto di sviluppo software, possono impattare sul successo o l'insuccesso del progetto. \\
+
+
+\noindent Gli ingegneri devono interagire con gli stakeholder per scoprire informazioni sul dominio applicativo, sulle funzionalità che dovrebbe avere il sistema, sulle prestazioni ed altri vincoli operativi.
+
+\subsubsection{Difficoltà}
+Tendenzialmente nè fornitore nè committente sono in grado, da soli, di estrarre efficaciemente i requisiti di sistema:
+\begin{itemize}
+	\item il committente non ha la necessaria conoscenza dei processi software per definire in maniera efficace i requisiti, può non avere un'idea chiara sui requisiti, può usare termini propri del dominio di appartenenza
+	\item diversi stakeholder potrebbero avere requisiti contrastanti
+	\item il fornitore non ha conoscenza perfetta del dominio applicativo, e non può esprimere le effettive necessità
+\end{itemize}
+
+\subsubsection{Processo}
+%[AGGIUNGERE} - diagramma Process (slide 38 - 6_specifica_convalida_req.pdf)
+
+\begin{figure}[!h] 
+    \centering
+    \includegraphics[width=0.4\textwidth]{Immagini/6_specifica_convalida_req_processo.png}
+    \caption{Diagramma "Deduzione e Analisi dei Requisiti: Processo"}
+    \label{fig:analisi}
+\end{figure}
+
+Processo iterativo che termina quando il documento dei requisiti è completo, la comprensione dei requisiti da parte dell'ingegnere migliora ad ogni iterazione.
+\begin{enumerate}
+	\item \textbf{Scoperta e Comprensione}: gli analisti interagiscono con gli stakeholder per scoprire i loro requisiti.
+	\item \textbf{Classificazione e Organizzazione}: i requisiti scoperti sono una raccolta non strutturata, quelli tra loro correlati vanno raggruppati in gruppi coerenti, eliminando i duplicati.
+	\item \textbf{Negoziazione e priorità}: dare una priorità ai requisiti, trovare e risolvere i conflitti attraverso la negoziazione. 
+	\item \textbf{Documentazione}: i requisiti vengono documentati e diventano l'input della successiva iterazione. Diversi livelli di documentazione a seconda del processo: bozze di documenti dei requisiti software, o informalmente su lavagne, wiki o spazi condivisi.
+\end{enumerate}
+
+%% SISTEMARE DALLE SLIDE
+
+\subsubsection{Tecniche per estrarre i requisiti}
+\begin{itemize}
+	\item \textbf{Interviste}: sia formali che informali, a risposta chiusa o aperta
+	\item \textbf{Etnografia}: osservare e analizzare le persone nell'ambiente operativo
+	\item \textbf{Storie Utente e Scenari}: testi narrativi che descrivono scenari pratici di utilizzo del software
+\end{itemize}
+
+\subsubsection{Interviste}
+I team di ingegneria fanno domande (chiuse o aperte) agli stakeholder sul sistema che utilizzano e su ciò che dev'essere sviluppato al fine di comprendere le loro necessità e dalle loro risposte si ottengono i requisiti. \\
+
+\textbf{Sueggerimenti per le interviste} per renderle più efficaci \\
+Un prototipo può aiutare ad avere requisiti dettagliati. \\
+Gli specialisti di dominio potrebbero usare termini specifici o omettere dettagli che considerano ovvi. \\
+Dettagli organizzativi o politici potrebbero essere non rilevati a degli estranei, come dettagli aziendali. \\
+L'intervistatore dev'essere open-minded, evitando di avere preconcetti durante l'intervista. \\
+Evitare domande aperte generiche.\\
+
+\subsubsection{Etnografia}
+Un analista osserva l'ambiente operativo immergendosi in esso, osserva il lavoro quotidiano, prendendo nota dei compiti in cui i partecipanti sono coinvolti. \\
+Scopre requisiti implitici che riflettono processi reali. \\
+Datco che presenta un focus sugli utenti finali, andrebbe arricchita con altri metodi per requisiti ad alto livello. 
+
+\textbf{Motivazioni} \\
+I sistemi non sono mai isolati, vengono usati in un contesto operativo assieme ad altri software e in un contesto sociale dove ogni persona lo utilizza in maniera differente. \\
+Ci sono persone che possono avere problemi-inefficienze, o un basso livello di comunicatività, dove non riescono a spiegare bene cosa gli serve.
+
+\subsubsection{Storie e Scenari}
+Descrfivono come il sistema può essere utilizzato per svolgere particolari compiti, descrivono cosa fanno le persone, quali informazioni utilizzano e producono, e quali sistemi possono utilizzare questo processo.
+\begin{itemize}
+	\item \textbf{Storie}: testi narrativi che presentano una descrizione di alto livello di come viene usato il sistema
+	\item \textbf{Scenari}: informazioni specifiche, spesso strutturate e raccolte come input, output e flusso di eventi durante un'interazione con il sistema
+\end{itemize}
+Più persone possono mettersi in relazione con storie e scenari, permettendo la raccolta di informazioni da un pubblico più vasto. \\
+Le persone si trovano più a loro agio riferendosi a esempi di vita reale. \\
+Più semplice per una persona raccontare come vorrebbe che il software funzionasse. 
+
+\subsection{Specifica dei Requisiti}
+Processo di descrizione dei requisiti utente e di sistema in un documento. 
+
+\subsubsection{Specifica dei Requisiti Utente}
+I requisiti utente devono essere comprensibili a tutti gli utilizzatori del sistema, anche a quelli privi di conoscenze tecniche specifiche. Devono descrivere esclusivamente il comportamento del sistema visto dall'esterno e i suoi vincoli operativi. \\
+La specifica dei requisiti utente non deve (o non dovrebbe) in alcun modo includere dettagli architetturali o di progettazione interna del sistema. \\
+Sono tendenzialmente scritti in linguaggio naturale.
+
+\subsubsection{Specifica dei Requisiti Sistema}
+
+\subsubsection{Specifica dei Requisiti VS Progetto}
+\underline{In teoria}
+\begin{itemize}
+    \item la specifica dei requisiti non dovrebbe contenere informazioni su progettazione o implementazione del sistema.
+    \item il progetto deve descrivere come i requisiti sono realizzati.
+\end{itemize}
+\underline{In pratica}
+\begin{itemize}
+    \item requisiti e progetto sono inseparabili: non è possibile, né auspicabile, escludere tutte le informazioni sulla progettazione.
+\end{itemize}
+
+\subsubsection{Linguaggi per la specifica}
+Possono essere espressi in linguaggio naturale (NL), ci sono però delle alternative:
+\begin{itemize}
+	\item linguaggio naturale strutturato o semi-strutturato
+	\item modelli grafici
+	\item specifiche formali
+\end{itemize}
+
+\subsubsection{Linguaggio Naturale (NL)}
+
+\textbf{PRO}
+\begin{itemize}
+    \item espressivo, intuitivo e universale: può essere compreso da utenti e clienti.
+\end{itemize}
+\textbf{CONTRO}
+\begin{itemize}
+    \item mancanza di chiarezza: difficile usare il linguaggio in modo conciso, e allo stesso tempo, preciso e non ambiguo.
+    \item confusione: difficile distinguere le varie tipologie di requisiti. Inoltre, diversi requisiti potrebbero essere espressi in una singola frase.
+\end{itemize}
+
+\noindent \textbf{LINEE GUIDA}
+\begin{itemize}
+    \item formato standard coerente e conciso, riduce il rischio di omissioni e semplifica il controllo dei requisiti.
+    \item utilizzo coerente del linguaggio: "deve" per obbligatori, "dovrebbe" se desiderabili.
+    \item formattazione coerente del testo per evidenziare i punti chiave di un requisito.
+    \item evitare l'utilizzo del linguaggio tecnico.
+    \item spiegare perchè un requisito è necessario e chi lo ha proposto, in modo da sapere chi consultare se il requisito dovrebbe essere modificato.
+\end{itemize}
+
+\subsubsection{Specifiche Strutturate}
+L'utilizzo del linguaggio naturale con una struttura predefinita standard per tutti i requisiti, garantisce maggiore uniformità. 
+Ogni elemento della struttura fornisce informazioni su un aspetto del requisito. 
+Limita la libertà di chi scrive i requisiti, permette la stesura in maniera guidata. 
+Possibilità di utilizzo di costrutti del linguaggio di programmazione (IF, FOR). 
+Si può usare una formattazione per evidenziare i punti chiave di un requisito. \\
+
+\noindent \textbf{Specifiche Tabellari} \\
+Se bisogna specificare calcoli complessi, è difficile non introdurre ambiguità. \\
+Possibile aggiungere informazioni supplementari al linguaggio naturale, come tabelle o modelli grafici del sistema. \\
+Utili per la descrizione di situazioni alternative e azioni da intraprendere in ogni situazione. \\
+
+\noindent \textbf{VANTAGGI E SVANTAGGI} \\
+\textbf{Vantaggi}
+\begin{itemize}
+    \item conserva l'espressività del linguaggio naturale.
+    \item impone uniformità per descrivere le specifiche, riducendo variabilità.
+    \item organizza i requisiti in modo efficace.
+\end{itemize}
+
+\noindent \textbf{Svantaggi}
+\begin{itemize}
+    \item troppo rigido per descrivere alcuni tipi di requisiti che richiedono descrizioni più libere ed espressive.
+    \item difficile scrivere i requisiti in modo non ambiguo quando sono molto complessi.
+\end{itemize}
+
+\section{Introduzione UML}
+
+\subsection{Motivazione}
+I sistemi software moderni tendono a crescere e a diventare sempre più complessi.
+\begin{itemize}
+    \item è impensabile comprendere sistemi complessi direttamente dal codice.
+    \item il codice spesso è incomprensibile.
+    \item necessità di forme di rappresentazione più astratte per discutere le scelte di progetto.
+    \item la modellazione è un modo per gestire la complessità del software.
+\end{itemize}
+
+\subsection{Modellazione di un sistema}
+Processo che sviluppa modelli astratti di un sistema, non una rappresentazione alternativa:
+\begin{itemize}
+    \item la rappresentazione di un sistema mantiene tutte le informazioni sull'entità che rappresenta.
+    \item un'astrazione semplifica deliberatamente un sistema evidenziandone le caratteristiche salienti, eventualmente tralasciando altre caratteristiche.
+\end{itemize}
+Ad un sistema possono corrispondere più modelli:
+\begin{itemize}
+    \item ogni modello rappresenta una differente vista o prospettiva del sistema.
+\end{itemize}
+Si possono utilizzare notazioni grafiche o notazioni matematiche
+
+\subsection{Terminologia}
+\textbf{Modello}: astrazione che descrive un sistema o sottosistema.
+\textbf{Vista (o prospettiva)}: descrizione di aspetti specifici di un sistema da una certa prospettiva, in cui si omettono dettagli non rilevanti per tale prospettiva
+\textbf{Notazione}: insieme di elementi grafici o testuali e regole per rappresentare le viste.
+Diverse viste/modelli possono sovrapporsi.
+
+\subsection{Linguaggi di Modellazione}
+Per descrivere i modelli si utilizzano linguaggi di modellazione, in passato, diversi linguaggi di modellazione erano usati da supporto delle metodologie che si applicavano nelle varie fasi del processo di sviluppo software.
+Negli ultimi anni il linguaggio UML si sta affermando come linguaggio unificato che possa essere utilizzato in tutte le attività di modellazione. Esistono anche altri linguaggi come SysML (variante per sistemi complessi, es. IoT)
+
+\subsubsection{Storia UML}
+Skippabile?
+
+\subsection{UML: Notazioni + Meta-Modello}
+UML è una famiglia di notazioni grafiche che si basano su un singolo meta-modello (modello che definisce i concetti stessi del linguaggio di modellazione, indica secondo quali regole sia possibile costruite modelli UML).
+UML non è una metodologia: ha l'obiettivo di fornire un supporto al processo di sviluppo software.
+Può essere usato all'interno dei processi di sviluppo che adottano le proprie metodologie.
+
+\subsection{Regole Prescrittive e Descrittive}
+Le regole UML possono essere considerate sia prescrittive che descrittive:
+\begin{itemize}
+    \item regole \textbf{prescrittive}: regole stabilite da organismi standardizzati che definiscono precisamente lessico, sintassi e semantica del linguaggio. Fondamentali quando UML è usato come linguaggio di programmazione.
+    \item regole \textbf{descrittive}: stabilite per convenzione comune, possono essere meglio comprese guardando come UML viene usato nella pratica da un'organizzazione.
+\end{itemize}
+Bisogna conoscere le convenzioni particolari della specifica organizzazione e del singolo progetto, anche se al di fuori dello standard.
+
+\subsection{UML}	
+Secondo Fowler e Mellor, UML può essere usato:
+\begin{enumerate}%[label=\textbf{\Alph* ---}]
+    \item \textbf{Come bozza (sketch)}: per tracciare un modello informale di sistema da realizzare o per descrivere un sistema esistente.
+    \item \textbf{Come progetto dettagliato (blueprint)}: per realizzare un modello completo della soluzione architetturale del sistema.
+    \item \textbf{Come linguaggio di programmazione}: in grado di modellare in maniera completa e precisa il sistema software (spesso associato a Model-Driven Architecture - MDA).
+\end{enumerate}
+
+\subsection{Bozze: Espressività > Completezza}
+Quando si realizza una bozza, lo scopo è aiutare la comunicazione e la discussione delle idee, esplorando le soluzioni alternative, i diagrammi non devono essere esaustivi e definire tutti gli aspetti del codice. \\
+Le bozze sono disegnate in poco tempo e in modo collaborativo, non rispettando tutte le regole formali dello standard.
+
+\subsection{Progetto Dettagliato: Espressività + Completezza}
+Quando si realizza o si deve capire un progetto, lo scopo è aiutare la comprensione e la completezza. \\
+Il progettista sviluppa un modello di progetto che lo sviluppatore dovrà realizzare, salvandolo in file condivisi. \\
+La completezza e non ambiguità del modello aiutano il programmatore, guidato dal modello e non dovrà avere aspetti ambigui da interpretare.
+
+\subsection{UML come linguaggio di programmazione}
+L'approccio MDA (Model Driven Architecture) esplora la possibilità di usare UML come linguaggio di programmazione, si vorrebbe stabilire una sintassi e semantica precisa per UML che portino alla generazione di codice eseguibile rappresentativo del modello. \\
+La sfida risiede nel modellare precisamente anche la logica del progetto, il vantaggio consiste nel generare codice per diverse piattaforme target da un modello indipendente dalla piattaforma.
+
+\subsection{Informazioni soppresse}
+L'assenza di qualche informazione in un diagramma UML non significa che tale informazione non esista, alcuni aspetti del problema potrebbero essere assenti da un diagramma perché non ancora trattati nella fase in cui è stato tracciato il diagramma.
+
+\subsection{Tipi di diagramma UML}
+UML 2 possiede 13 diversi tipi di diagrammi ufficiali, appartenenti a due categorie:
+\begin{itemize}
+    \item diagrammi strutturali: modellano l'organizzazione del sistema.
+    \item diagrammi comportamentali: modellano il comportamento e le interazioni tra le entità del sistema.
+\end{itemize}
+Questi diagrammi rappresentano i deliverables di diversi fasi del ciclo di vita del software, tra cui attività di analisi dei requisiti e attività di progettazione, sia di alto che di basso livello.
+
+\subsection{Prospettive UML}
+Prospettiva esterna: modellati in contesto operativo del sistema. \\
+Prospettiva delle interazioni: sono modellate le interazioni tra il contesto e il sistema o tra diverse componenti del sistema. \\
+Prospettiva strutturale: sono modellate l'organizzazione del sistema e/o la struttura dei dati. \\
+Prospettiva comportamentale: sono modellati il comportamento dinamico del sistema e come esso risponde agli eventi.
+
+\subsection{Integrare UML nel processo di sviluppo}
+UML può essere usato in diverse fasi del processo di sviluppo
+\begin{itemize}
+    \item analisi dei requisiti: facilita la deduzione dei requisiti, la notazione non dev'essere troppo complessa per favorire la comunicazione con il cliente.
+    \item progettazione: modelli più tecnici e dettagliati per descrivere il sistema agli ingegneri che lo devono implementare.
+    \item documentazione (dopo implementazione): modelli rendono più semplice la descrizione di parti complesse o convogliano messaggi in maniera intuitiva immediata.
+    \item comprensione di software pre-esistente: evoluzione o reverse-engineering.
+\end{itemize}
+Nei processi iterativi ogni iterazione arricchisse i diagrammi delle iterazioni precedenti. 
+
+
+\section{Diagrammi dei Casi d'Uso}
+
+\subsubsection{Def. Diagramma Comportamentale}
+\underline{DEF. \textbf{Diagramma comportamentale}}
+modella il comportamento esterno del sistema, senza specificare nel dettaglio come questo comportamento viene realizzato, nella fattispecie modella l'interazione tra il sistema e gli agenti esterni.
+
+\subsubsection{Diagramma dei casi d'uso nel processo software}
+Utilizzato nella raccolta dei requisiti, diagramma con tutti i requisiti funzionali del sistema, descrive le tipiche interazioni tra utenti e sistema.
+Viene adottato il punto di vista degli utenti, so solo cosa do e cosa mi torna il software.
+
+
+\subsubsection{Scenari e Casi d'Uso}
+\begin{itemize}
+    \item \textbf{Scenario}: sequenza di passi che caratterizzano una particolare interazione tra utente e sistema.
+    \item \textbf{Caso d'uso}: insieme di scenari che hanno uno scopo finale dell'utente in comune.
+\end{itemize}
+Gli utenti sono \textbf{attori} nello scenario.
+Il caso d'uso è una tipica interazione tra attore e sistema per svolgere un'unità di lavoro utile, non rivela l'organizzazione interna del sistema.
+L'insieme dei casi d'uso rappresenta le funzionalità che il sistema offre agli attori.
+Il diagramma UML dei casi d'uso è comprensibile anche ai non addetti ai lavori.
+La descrizione di un caso d'uso specifica cosa fa il sistema in seguito ad uno stimolo.
+Lo stimolo può partire da un attore o anche dal sistema.
+Un caso d'uso corrisponde ad un compito:
+- che l'attore chiede al sistema di eseguire
+- che il sistema esegue autonomamente
+
+
+\subsection{Elementi dei Casi d'Uso}
+
+\subsubsection{Subject (Confini del sistema)}
+Rappresenta il confine tra ciò che è all'interno e ciò che è all'esterno del sistema, quello che si trova all'interno andrà progettato, realizzato, verificato e validato.
+
+\subsubsection{Attore}
+Rappresenta un ruolo che l'utente del caso d'uso svolge nell'interagire con il sistema.
+Gli attorni sono sempre esterni al sistema.
+Un attore di un caso d'uso può essere:
+\begin{itemize}
+    \item una classe di persone fisiche.
+    \item altro sistema software.
+    \item dispositivo hardware esterno.
+\end{itemize}
+
+Un attore di caso d'uso può essere:
+\begin{itemize}
+    \item attore primario, se persegue lo scopo che il caso d'uso cerca di soddisfare.
+    \item attore secondario, altri attori con cui il sistema interagisce per svolgere con successo il caso d'uso.
+\end{itemize}
+
+Un attore primario può fornire lo stimolo che avvia il caso d'uso o interagisce dopo che il caso d'uso è stato avviato.
+
+\subsubsection{Caso d'Uso}
+Rappresenta una sequenza di azioni che un sistema può eseguire interagendo con attori esterni, è un'unità di lavoro utile (elaborazione) che il sistema esegue dopo l'evento di innesco del caso d'uso:
+\begin{itemize}
+    \item stimolato dall'attore primario per eseguire un compito che l'attore deve eseguire.
+    \item il sistema può iniziare il caso d'uso e interagire con uno o più attori esterni per eseguire un compito.
+\end{itemize}
+
+
+\subsection{Descrizione degli scenari}
+\subsubsection{Scenari}
+Un caso d'uso è descritto tramite un insieme di scenari di interazione tra gli attori ed il sistema.
+Uno scenario è una sequenza di azioni/interazioni fra sistema e attori.
+Il focus è rivolto all'interazione, non alle attività interne del sistema.
+Uno scenario definisce cosa accade nel sistema in seguito all'evento di innesco:
+\begin{itemize}
+    \item come e quando il caso d'uso inizia.
+    \item chi inizia il caso d'uso.
+    \item interazione tra attore e caso d'uso e cosa viene scambiato.
+    \item come e quando c'è bisogno di dati memorizzati o di memorizzare i dati.
+    \item come e quando il sistema d'uso termina.
+\end{itemize}
+Per ogni caso d'uso sono previsti scenari normali e scenari alternativi.
+
+\subsubsection{Stili di descrizione degli scenari}
+Non esiste un modo standard per descrivere il contenuto di un caso d'uso.
+Stile di descrizione:
+\begin{itemize}
+    \item \textbf{testuali}: con flusso chiaro di eventi da seguire.
+    \item \textbf{diagrammatici}: diagrammi UML di stato, sequenza, interazione.
+\end{itemize}
+
+
+\subsubsection{Scenari come sequenze di passi}
+Ogni scenario può essere espresso come sequenza di passi numerati:
+\begin{itemize}
+    \item ciascun passo corrisponde a un'interazione tra attore e sistema.
+    \item il passo dev'essere espresso con una frase semplice che indichi chi lo sta eseguendo e qual è il suo intento, senza riportare dettagli tecnici sulle azioni.
+\end{itemize}
+
+\subsubsection{Scenari principali e alternativi}
+Un caso d'uso è una collezione di scenari correlati in cui gli attori interagiscono con il sistema per raggiungere l'obiettivo:
+\begin{itemize}
+    \item scenario principale di successo: descrive il flusso principale.
+    \item percorsi alternativi, possono essere sia di successo che di insuccesso.
+\end{itemize}
+Il percorso alternativo riporta:
+\begin{itemize}
+    \item il numero del passo in cui si discosta dallo scenario principale.
+    \item la condizione che deve essere soddisfatta per scatenare tale percorso invece dello scenario principale.
+    \item al suo termine in quale punto (numero di passo) rientra nel flusso principale.
+\end{itemize}
+
+\subsubsection{Pre-Condizioni e Post-Condizioni}
+Oltre ai passi che compongono gli scenari, un caso d'uso può riportare le condizioni che si devono verificare prima e dopo il caso d'uso
+\begin{itemize}
+    \item Pre-Condizioni: ciò di cui il sistema deve assicurarsi prima di eseguire il caso d'uso.
+    \item Post-Condizioni: ciò che il sistema deve garantire al termine del caso d'uso.
+\end{itemize}
+
+\subsubsection{Descrizione di un Caso d'Uso}
+Per ogni caso d'uso è opportuno documentare gli scenari, non esiste un formato standard della descrizione, ogni organizzazione definisce il proprio formato.
+
+\subsubsection{Uso di IF, WHILE e FOR negli scenari}
+Cicli WHILE o FOR possono essere usati per racchiudere gruppi di passi che devono essere ripetuti più volte (o in italiano per ogni e finchè).
+Le alternative possono essere descritte attraverso costrutti di selezione IF/ELSE (o in italiano, se e altrimenti).
+
+\subsubsection{Linee guida per la descrizione degli scenari}
+\begin{itemize}
+    \item Scrivere in stile essenziale, senza riferimenti all'implementazione.
+    \item Descrivere casi d'uso concisi e completi.
+    \item Descrivere casi d'uso a scatola nera.
+\end{itemize}
+Nella descrizione di un caso d'uso non devono essere indicati dettagli che rivelino le scelte di progetto del software:
+\begin{itemize}
+    \item quando si pensa ai casi d'uso, non si è ancora affrontato alcun aspetto della progettazione.
+    \item non possono esserci riferimenti a specifici file, a meno che essi non rappresentino dei vincoli.
+\end{itemize}
+
+\subsection{Relazioni tra Attori e tra Casi d'Uso}
+
+\subsubsection{Generalizzazione di Attori}
+L'attore specializzato conserva le proprietà del generale oltre a possedere sue caratteristiche particolari.
+La freccia parte dall'attore specializzato e punta all'attore generale.
+La generalizzazione permette di astrarre ruoli comuni a più attori e semplificare i diagrammi.
+
+\subsection{Relazioni tra Casi d'Uso}
+Tra i casi d'uso possono esistere relazioni di tipo:
+\begin{itemize}
+    \item generalizzazione.
+    \item inclusione.
+    \item estensione.
+\end{itemize}
+Usate per strutturare ulteriormente un diagramma dei casi d'uso:
+\begin{itemize}
+    \item generalizzando/specializzando un caso d'uso.
+    \item estraendo comportamenti comuni tra casi d'uso e inclusi in più casi d'uso.
+    \item distinguendo comportamenti alternativi rispetto al caso d'uso base, estendendo il caso d'uso base con un caso d'uso alternativo.
+\end{itemize}
+
+\subsubsection{Generalizzazione tra Casi d'Uso}
+Il caso d'uso generale rappresenta diversi casi d'uso simili.
+Un caso d'uso specializzato eredita comportamento e significato del caso d'uso generale, fornendo i dettagli specifici dei casi d'uso simili
+Un caso d'uso specializzato può aggiungere passi o modificare il comportamento del generale
+
+\subsubsection{Inclusione tra Casi d'Uso}
+La relazione d'inclusione formalizza i casi in cui più casi d'uso includono una serie di azioni comuni.
+Il comportamento comune a più casi d'uso diventa un caso d'uso che è incluso nei casi d'uso di partenza.
+Il caso d'uso base è incompleto senza il caso incluso
+Rappresentato graficamente come una dipendenza stereotipata <<include>> che parte dal caso base e arriva al caso incluso.
+L'inclusione non contiene informazioni sull'ordine dei casi d'uso, il caso incluso è una sequenza di azioni che è eseguita una o più volte dai casi d'uso includenti.
+L'inclusione è simile a una chiamata a procedura: Include(TrovaDatiImpiegato)
+
+\subsubsection{Inclusione e Generalizzazione}
+Se un caso d'uso generale include un altro caso d'uso, tutte le sue specializzazioni "ereditano" tale inclusione.
+
+\subsubsection{Estensione dei Casi d'Uso}
+Modella una sequenza opzionale di eventi o casi eccezionali, ogni estensione definisce un nuovo caso d'uso che estende il caso di partenza e ne varia il comportamento normale.
+Nel caso d'uso esteso (base) si agganciano ad uno o più punti d'estensione (XP: eXtension Points), le condizioni che fanno scattare l'estensione.
+Rappresentato graficamente come una dipendenza stereotipata <<extend>> che parte dall'estensione e arriva al caso base.
+
+L'estensione non contiene informazioni sull'ordine dei casi d'uso.
+Le estensioni potrebbero anche essere accessibili direttamente da un attore.
+In questo caso nel diagramma dei casi d'uso ci sarà un segmento di comunicazione tra l'attore e il caso d'uso esteso.
+
+I casi d'uso di estensione aggiungono un comportamento in corrispondenza dei punti di estensione.
+Il caso d'uso base si può svolgere anche senza i casi d'uso d'estensione.
+Creando estensioni separate, la descrizione del caso base rimane semplice.
+
+\subsubsection{Estensioni VS Scenari alternativi: alternative modellistiche}
+L'esempio "EffettuaOrdine" si poteva anche risolvere usando un unico caso d'uso:
+\begin{itemize}
+    \item la soluzione con tre casi d'uso è più utile nel caso in cui i casi d'uso estesi abbiano ulteriori legami e/o siano direttamente richiamabili dall'utente.
+    \item la soluzione con un solo caso d'uso e più scenari fornisce una vista più compatta del sistema, e potrebbe essere preferibile se si vuole realizzare un modello dei casi d'uso meno dettagliato e più leggibile.
+\end{itemize}
+
+\subsubsection{Errori tipici con i Casi d'Uso}
+Diagrammi troppo complessi con molti casi d'uso: i casi d'uso rappresentano sequenze di azioni, non una singola azione.
+Ripetere il nome dello stesso caso d'uso più volte nello stesso diagramma.
+Le frecce delle relazioni di estensione o inclusione non sono tratteggiate, etichettate con <<extend>> o <<include>>, oppure nel verso sbagliato.
+
+\subsubsection{Requisiti Funzionali e Casi d'Uso}
+La modellazione dei casi d'uso è una tecnica di ingegneria dei requisiti
+\begin{itemize}
+    \item Requisito funzionale: funzionalità richiesta dal committente.
+    \item Caso d'uso: modalità di utilizzo del sistema da parte di un utente (attore).
+\end{itemize}
+
+Tracciabilità tra requisiti e casi d'uso
+è importante incrociare requisiti funzionali e casi d'uso per verificare la reciproca copertura: ogni requisito dev'essere coperto da almeno un caso d'uso e viceversa, questa informazione può essere riportata nella \textbf{matrice di traccibilità}.
+
+\subsubsection{Prodotto Finale}
+L'analisi dei casi d'uso produce:
+\begin{itemize}
+    \item un diagramma dei casi d'uso.
+    \item le descrizioni di tutti gli scenari di tutti i casi d'uso.
+\end{itemize}
+
+Nel diagramma è contenuto solo un piccolo sottoinsieme delle informazioni contenute nelle descrizioni degli scenari, tutte le informazioni contenute nel diagramma sono contenute anche nelle descrizioni degli scenari.
+Il diagramma dei casi d'uso non dovrebbe mai essere considerato separatamente dalle descrizioni degli scenari.
+
+
+\subsection{Suggerimenti per la costruzione del Diagramma dei Casi d'Uso}
+\begin{enumerate}
+    \item Definisci i confini del sistema.
+    \item Identifica gli attori.
+    \item Identifica i casi d'uso.
+    \item Definisci il diagramma.
+    \item Descrivi i casi d'uso.
+    \item Struttura i casi d'uso.
+\end{enumerate}
+
+\subsubsection{Definisci i Confini}
+Quali responsabilità rientrano nei confini del sistema che stiamo modellando?
+Esempio: "Pagamento alla cassa automatica"
+
+\subsubsection{Identifica Attori}
+Identifica gli attori che interagiscono con il sistema per eseguire qualche compito
+\begin{itemize}
+    \item identifica gli attori che necessitano del sistema per svolgere qualche compito.
+    \item identifica gli attori cui il sistema si rivolge per svolgere qualche compito.
+\end{itemize}
+Raggruppa le persone identificate secondo i loro ruoli rispetto al sistema
+Identifica altri sistemi software e dispositivi esterni che interagiscono con il sistema per svolgere qualche compito: essi potrebbero essere altri attori.
+
+\subsubsection{Identifica i Casi d'Uso}
+Per ogni attore:
+\begin{enumerate}
+    \item Identifica compiti e funzioni
+    \begin{itemize}
+        \item identifica i compiti o funzioni di più basso livello che l'attore dev'essere in grado di eseguire attraerso il sistema.
+        \item identifica i compiti che il sistema richiede che l'attore esegua.
+    \end{itemize}
+    \item Raggruppa compiti e funzioni in casi d'uso
+    \begin{itemize}
+        \item i casi d'uso devono corrispondere ad un obiettivo specifico per l'attore o per il sistema.
+        \item raggruppa funzioni che sono eseguite in sequenza o che sono innescate dallo stesso evento.
+        \item il caso d'uso dev'essere nè troppo grande nè troppo piccolo.
+    \end{itemize}
+    \item Dai un nome al caso d'uso sintetizzando la funzionalità svolta
+\end{enumerate}
+
+\subsubsection{Definisci il diagramma dei casi d'uso}
+Il diagramma contiene le relazioni tra attori e casi d'uso, ogni attore deve partecipare ad almeno un caso d'uso, ogni caso d'uso deve avere almeno un attore con cui comunica.
+Se due attori partecipano agli stessi casi d'uso considerare la possibilità di unirli in un unico attore.
+
+\subsubsection{Descrivi i casi d'uso}
+Considerare sia lo scenario principale che scenari altrernativi ed eccezionali \\
+Per ogni scenario specificare:
+\begin{itemize}
+    \item quale evento scatena il caso d'uso (trigger).
+    \item chi inizia il caso d'uso.
+    \item quali precondizioni sono da ritenersi verificate nel momento in cui il caso d'uso inizia.
+    \item quali sono le interazioni tra il/gli attore/i e il sistema e quali dati/comandi vengono scambiati.
+    \item come e quando c'è bisogno di memorizzare i dati.
+    \item come e quando il caso d'uso termina.
+    \item quali post-condizioni sono da ritenersi verificate nel momento in cui il caso d'uso termina.
+\end{itemize}
+Se due casi d'uso hanno comportamenti leggermentie diversi e gli stessi attori, considerare la possibilità di avere un unico caso d'uso con scenari alternativi.
+
+\subsubsection{Struttura i casi d'uso}
+Identifica le relazioni di estensione:
+\begin{itemize}
+    \item specializza i casi d'uso che hanno molti scenari alternativi.
+    \item collega i nuovi casi d'uso a quelli di partenza mediante relazione <<extend>>.
+\end{itemize}
+Identificare le relazioni di inclusione:
+\begin{itemize}
+    \item estrarre parti comuni in casi d'uso differenti.
+    \item collegare i casi d'uso che condividono una parte comune al nuovo caso d'uso rappresentante il comportamento condiviso mediante l'associazione <<include>>.
+\end{itemize}
+\end{document}
