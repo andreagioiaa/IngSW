@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.7)  7 NOV 2025 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.7)  7 NOV 2025 16:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -887,7 +887,7 @@ Package hyperref Info: Link coloring OFF on input line 39.
 \openout4 = `Riassunto.out'.
 
 \c@lstlisting=\count367
-<immagini/Logo.pdf, id=698, 225.84375pt x 225.84375pt>
+<immagini/Logo.pdf, id=702, 225.84375pt x 225.84375pt>
 File: immagini/Logo.pdf Graphic file (type pdf)
 <use immagini/Logo.pdf>
 Package pdftex.def Info: immagini/Logo.pdf  used on input line 54.
@@ -1020,7 +1020,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
 
  []
 
-<Immagini/6_specifica_convalida_req_processo.png, id=1035, 218.8175pt x 149.558
+<Immagini/6_specifica_convalida_req_processo.png, id=1040, 218.8175pt x 149.558
 75pt>
 File: Immagini/6_specifica_convalida_req_processo.png Graphic file (type png)
 <use Immagini/6_specifica_convalida_req_processo.png>
@@ -1078,7 +1078,7 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 
 [36]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-585.
+587.
  (C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1096,21 +1096,14 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-
-
-Package rerunfilecheck Warning: File `Riassunto.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Riassunto.out':
-(rerunfilecheck)             Before: 75784EA2B818302D0F51E375DE810967;31939
-(rerunfilecheck)             After:  40455DCD5DEFBBE5F6CA9CB56AA845A7;32188.
+Package rerunfilecheck Info: File `Riassunto.out' has not changed.
+(rerunfilecheck)             Checksum: 40455DCD5DEFBBE5F6CA9CB56AA845A7;32188.
  ) 
 Here is how much of TeX's memory you used:
- 29447 strings out of 468130
- 586533 string characters out of 5440706
+ 29448 strings out of 468130
+ 586554 string characters out of 5440706
  1029078 words of memory out of 5000000
- 57293 multiletter control sequences out of 15000+600000
+ 57294 multiletter control sequences out of 15000+600000
  677507 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,6n,105p,440b,621s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1118,9 +1111,9 @@ Here is how much of TeX's memory you used:
 iKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:
 /Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Riassunto.pdf (42 pages, 410979 bytes).
+Output written on Riassunto.pdf (42 pages, 411423 bytes).
 PDF statistics:
- 1218 PDF objects out of 1440 (max. 8388607)
+ 1222 PDF objects out of 1440 (max. 8388607)
  287 named destinations out of 1000 (max. 500000)
- 1479 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1487 words of extra memory for PDF output out of 10000 (max. 10000000)
 
