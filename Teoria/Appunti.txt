@@ -1,0 +1,182 @@
+\usepackage[most]{tcolorbox} % Carica il pacchetto
+
+% Definisco un nuovo box chiamato "graybox"
+\newtcolorbox{graybox}{
+  colback=gray!20,  % Colore di sfondo (20% grigio)
+  colframe=gray!20, % Colore del bordo (uguale allo sfondo per nasconderlo)
+  boxrule=0pt,      % Spessore del bordo (0 = nessuno)
+  sharp corners,    % Angoli squadrati (non arrotondati)
+  boxsep=2pt,       % Un po' di padding interno
+  left=2pt,         % Padding sinistro
+  right=2pt         % Padding destro
+}
+
+\section{Diagramma dei casi d'uso}
+
+\subsection{Definizione}
+\subsubsection{Diagramma UML delle classi}
+è un diagramma strutturale, mostra una vista statica del modello, l'organizzazione del progetto del sistema ma non mostra informazioni temporali. I suoi elementi corrispondono a concetti fondamentali dell'OO.
+Rappresenta:
+- tipi di oggetti (classi) del sistema che corrispondono alle entità che esistono nel sistema
+- le relazioni statiche tra classi ed i vincoli che si applicano a tali relazioni
+- le caratteristiche delle classi: proprietà (attributi e responsabilità dei metodi) e responsabilità
+
+UTILIZZO DEL DIAGRAMMA
+- Fase di definizione dei requisiti: vede le \textbf{entità} del dominio e cattura i suoi concetti principali, fissando anche i confini del sistema. Modello architetturale rivolto alla comprensione di cosa fa il sistema, non di come lo fa.
+- Fase di progettazione: identifica le \textbf{identità} del sistema e le relazioni tra esse, prescinde dall'implementazione.
+- Fase di implementazione: identifica \textbf{classi} del software e le relazioni tra esse, corrisponde alla struttura reale del software poiché ne modella l'implementazione OO
+
+\subsubsection{Diagramma delle classi nel progetto di software}
+Si concentra sulla struttura e trascura i comportamenti del sistema, affianca i diagrammi delle classi con diagrammi comportamentali per rappresentare come il sistema si comporta in scenari reali.
+Un buon approccio prevede un costante passaggio tra diagrammi di struttura e di comportamento, migliorando la comprensione globale del sistema.
+
+\subsection{Sintassi}
+\subsubsection{Classe}
+Descrive un insieme di oggetti con le stesse proprietà (attributi), comportamento (operazioni) e relazioni con altri oggetti.
+Ogni oggetto è istanza di una sola classe
+In un dato istante un oggetto ha uno specifico stato
+In base al proprio stato, due oggetti rispondono diversamente alla stessa operazione
+Una classe, con nome singolare e tendenzialmente scritto in UpperCamelCase, è rappresentata da un rettangolo con tre sottosezioni: nome, attributi, operazioni
+
+\subsubsection{Attributi}
+
+\begin{graybox}
+\texttt{visibilità nome molteplicità: tipo = valoreDefault \{proprietà\}}
+\end{graybox}
+
+Tre livelli di visibilità degli attributi:
+- + pubblico: accesso esteso a tutte le classi
+- # protetto: accesso consentito solo alle classi che derivano dalla classe originale
+- - privato: solo la classe originale può accedere a tali attributi
+
+Il nome dell'attributo è l'unico parametro obbligatorio ed il tipo può essere sia un tipo primitivo che una classe definita nello stesso diagramma.
+
+La molteplicità indica il quantitativo degli attributi di un certo tipo: permette di indicare attributi come array o matrici, il valore default è 1. Il numero minimo e massimo possono essere racchiusi tra parentesi quadre quando il tipo è semplice.
+Gli elementi di una molteplicità a più valori sono considerati come un insieme.
+Se sono dotati di ordine è usata la notazione {ordered}
+Se sono possibili valori duplicati è usata la notazione {nonunique}
+
+valoreDefault è il valore assegnato all'attributo di default, se nessun valore è specificato durante la creazione.
+{proprietà} indica caratteristiche aggiuntive dell'attributo (es: readOnly).
+
+\subsubsection{Operazioni}
+Rappresentano i metodi di una classe: operazioni invocabili sugli oggetti istanza della classe. Sono le azioni che possono essere svolte da una classe di oggetti, tendenzialmente non sono riportate le operazioni che si occupano solo di modificare gli attributi, perché facilmente deducibili.
+
+\begin{graybox}
+\texttt{visibilità nome (listaParametri) : tipoRestituito \{proprietà\}}
+\end{graybox}
+
+\textbf{Visibilità} e \textbf{nome} sono analoghi agli attributi, mentre, \textbf{tipoRestituito} è il tipo di valore di ritorno.
+\textbf{listaParametri} contiene nome e tipo dei parametri della formula.
+
+\begin{graybox}
+\texttt{direzione nome parametro : tipo = valoreDefault}
+\end{graybox}
+
+\textbf{direzione}: input (in, rappresenta anche il valore default), output (out) o entrambi (inout).
+\textbf{nome}, \textbf{tipo} e \textbf{valoreDefault} sono analoghi agli attributi.
+
+\subsubsection{Responsabilità}
+All'interno dei diagrammi concettuali che descrivono il dominio non si inseriscono metodi perché rappresenterebbero un elemento del dominio della soluzione, è possibile usare le \textbf{responsabilità}: insiemi di funzioni principali che la classe dovrebbe garantire, utili per controllare la completezza del modello di dominio.
+Sono riportate come stringe di commento ( -- ) nel riquadro delle operazioni.
+
+%% [AGGIUNGERE] FOTO? Slide 23 PDF 9
+
+\subsubsection{Note e testo descrittivo}
+Commenti aggiuntivi in linguaggio naturale, simili ai commenti in un linguaggio di programmazione, possono essere collegati ll'elemento di riferimento tramite una linea tratteggiata, oppure, fluttuare senza collegamenti.
+
+%% [AGGIUNGERE] FOTO? Slide 24 PDF 9
+
+\subsubsection{Relazioni tra classi}
+Generalmente le classi di un diagramma delle classi sono in relazione con altre entità con legami di varia natura, le principai relazioni tra classi sono:
+- relazione di \textbf{associazione}
+- relazione di \textbf{generalizzazione-specializzazione}
+- relazione di \textbf{contenimento}
+
+\subsection{Associazioni}
+L'associazione tra due classi esprime una relazione tra istanze delle classi, è caratterizzata da:
+- \textbf{nome}: esprime il legame semantico tra le classi associate
+- eventuale \textbf{ruolo} giocato da ciascuna delle parti associate
+- \textbf{molteplicità} dell'associazione
+- \textbf{verso di navigazione} dell'associazione
+
+\subsubsection{Nome}
+Il \textbf{nome} è un'etichetta dell'associazione, solitamente un verbo, permette di formare frasi di senso compiu
+to e per evitare ambiguità è possibile specificare la direzione dell'associazione (con simboli < o >).
+
+\subsubsection{Ruolo}
+Possibilità di specificare il \textbf{ruolo} che gli oggetti di una classe rivestono quando collegati da istanze dell'associazione, il ruolo è specificato sull'estremità dell'associazione in prossimità della classe e spesso è usato in alternativa al nome.
+
+\subsubsection{Ruoli e Nomi}
+Non tutte le associazioni necessitano un nome: assegnarlo se migliora la chiarezza e comprensione del modello, ed evitare nomi generici che non aggiungono info utili.
+Quando due classi sono coinvolte in associazioni differenti tra le stesse classi, per distinguerle è opportuno riportare un nome dell'associazione o il ruolo delle classi nelle diverse associazioni.
+
+\subsubsection{Molteplicità}
+La molteplicità vincola il numero di oggetti di una classe che possono partecipare ad un'associazione in ogni istante, sono riportate sull'estremità dell'associazione prossima alla classe nella forma: \textbf{minimo...massimo}
+
+%ESEMPI...
+
+\subsubsection{Verso di navigazione}
+Da un punto di vista concettuale, un'associazione non ha un verso di percorrenza (se A è legato a B, B è legato ad A).
+Se specificata con una \textbf{freccia} la direzionalità attribuisce alla classe origine del verso di percorrenza la responsabilità di tenere traccia dell'associazione.
+Indica in quale direzione è possibile reperire le informazioni.
+
+\subsubsection{Associazioni VS Attributi}
+Le caratteristiche strutturali di una classe possono essere rappresentate sia come associazioni che come attributi di una classe.
+Le associazioni, a differenza degli attributi, possono riportare anche le molteplicità di entrambe le classi ma sono meno compatte, il progettista deve scegliere le entità che hanno maggiore importanza e rappresentarle come classi per dar loro più enfasi.
+Meglio non appesantire il diagramma con troppe associazioni 1 a 1, possibile usare \textbf{attributi} per concetti secondari e \textbf{associazioni} per classi significative, la scelta dipende da cosa si vuole enfatizzare nel programma.
+
+\subsubsection{Implementazione delle associazioni}
+%% [VEDERE] cosa mettere? Cosa può essere utile per l'esame?
+
+\subsection{Associazioni Riflessive e Classi Associative}
+\subsubsection{Associazioni Riflessive}
+Associazione che collega una classe con sé stessa: oggetti di una classe possono essere associati ad oggetti appartenenti alla classe stessa.
+
+\subsubsection{Classi Associative}
+In certi casi, un attributo caratterizza un'associazione ed è difficile stabilire a quale delle classi coinvolte appartiene, può essere opportuno definire una classe associativa che può avere attributi, metodi e altre associazioni, usate in genere per associazioni molti a molti.
+La classe associativa connette due classi e definisce un insieme di caratteristiche proprie dell'associazione stessa, ogni istanza di classe associativa, rappresenta un'associazione tra due istanze delle classi e contiene specifici valori degli attributi. Dato che caratterizza un'associazione, prima di creare un'istanza della classe associativa, devono esistere le istanze delle classi collegate.
+Ci può essere solo un'istanza di una specifica classe associativa tra ogni coppia di oggetti associati (istanze delle classi).
+Per rendere reale una classe associativa sarò opportuno trasformarla in classe.
+
+\subsection{Generalizzazione}
+\subsubsection{Generalizzazione-Specializzazione}
+I concetti di generalizzazione e specializzazione in UML sono analoghi a quelli OO, indica legami del tipo is-a ("è un") tra le sottoclassi e una superclasse (concetto generale, sottoclassi la loro specializzazione).
+Tipo di associazione rappresentato da una freccia che va dalla classe specializzata alla classe generale (info comuni mantenute in un posto solo, facilitano le modifiche del progetto).
+Le sottoclassi hanno tutti gli attributi e operazioni delle classi generali ed aggiungono operazioni e attributi più specifici.
+A livello \textbf{concettuale} (analisi dei requisiti), gen-spec esprime una relazione is-a tra un concetto generale e le sue specializzazioni.
+A livello di \textbf{dettaglio} (progetto e implementazione), gen-spec può essere interpretato:
+- come relazione di ereditarietà tra due classi concrete: le classi derivate ereditano attributi e metodi public e protected della classe base
+- come relazione di \textbf{realizzazione} tra una classe astratta e una classe concreta: la classe base ha soltanto prototipi di metodi, la classe specializzata implementa i metodi sfruttando l'overriding.
+
+Quando Gen-Spec descrive una gerarchia di \textbf{ereditarietà}:
+- la superclasse raccoglie caratteristiche e comportamenti comuni agli elementi delle sottoclassi
+- la classe derivata (sottoclasse) eredita metodi e attributi della classe base (superclasse) e può:
+	1. aggiungere altri attributi e operazioni
+	2. ridefinire i metodi della classe base (overriding)
+
+\subsection{Contenimento}
+La relazione di contenimento rappresenta il legame tra un insieme e le sue parti, tra il contenitore e il suo contenuto.
+
+\subsubsection{Aggregazione e Composizione}
+Il contenimento può essere:
+- debole (lasco), detto anche \textbf{aggregazione}: la parte mantiene la sua identità quando entra a far parte del tutto, è modellata da un rombo vuoto.
+- stretto, detto anche \textbf{composizione}: la parte perde la sua identità quando entra a far parte del tutto, è modellata da un rombo pieno.
+
+\subsubsection{Aggregazione}
+Il lato del "tutto" (rombo) è chiamato \textbf{aggregato}, le parti possono esistere indipendentemente da quell'aggregato ed è possibile che più aggregati condividano la stessa parte. La molteplicità del lato dell'aggregato, è sottintesa, vale 0..1.
+
+% [AGGIUNGERE] immagini? Slide 70 PDF 9
+
+Il ciclo di vita dell'oggetto contenuto è indipendente da quello dell'oggetto contenitore e può esistere indipendentemente dal contenitore.
+L'oggetto contenitore non è necessariamente responsabile della costruzione e distribuzione dell'oggetto contenuto.
+
+\subsubsection{Composizione}
+Forma forte di contenimento, in un problema, potrebbe non aver senso parlare di stanze se non sono legate alla casa in cui si trovano.
+
+Le parti non esistono senza il tutto, se il composito viene distrutto anche le sue parti saranno distrutte (o responsabilità ceduta a un altro oggetto), il composito è responsabile della costruzione e distribuzione degli oggetti contenuti, ogni parte può appartenere ad un solo composito per volta.
+
+\textbf{Principio di non condivisione} una classe può essere componente di più classi, un'istanza di classe componente può essere componente di un solo oggetto composito, anche se la classe componente può essere componente di molteplici classi composito diverse.
+
+La molteplicità del lato del "tutto" (composito), quando sottintesa vale 1 nel caso in cui la classe componente ha solo un'altra classe composito.
+L'altro caso è quando la classe componente può essere contenuta in due o più classi composito diverse, in questo caso la molteplicità è 0..1.

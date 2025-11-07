@@ -187,3 +187,32 @@
 \contentsline {subsubsection}{\numberline {8.5.4}Definisci il diagramma dei casi d'uso}{36}{subsubsection.8.5.4}%
 \contentsline {subsubsection}{\numberline {8.5.5}Descrivi i casi d'uso}{36}{subsubsection.8.5.5}%
 \contentsline {subsubsection}{\numberline {8.5.6}Struttura i casi d'uso}{36}{subsubsection.8.5.6}%
+\contentsline {section}{\numberline {9}Diagramma delle classi}{37}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Definizione}{37}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Diagramma UML delle classi}{37}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Utilizzo del diagramma}{37}{subsubsection.9.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.3}Diagramma delle classi nel progetto di software}{37}{subsubsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.2}Sintassi}{37}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Classe}{37}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Attributi}{37}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}Operazioni}{38}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}Responsabilità}{38}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}Note e testo descrittivo}{38}{subsubsection.9.2.5}%
+\contentsline {subsubsection}{\numberline {9.2.6}Relazioni tra classi}{38}{subsubsection.9.2.6}%
+\contentsline {subsection}{\numberline {9.3}Associazioni}{39}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Nome}{39}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Ruolo}{39}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}Ruoli e Nomi}{39}{subsubsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {9.3.4}Molteplicità}{39}{subsubsection.9.3.4}%
+\contentsline {subsubsection}{\numberline {9.3.5}Verso di navigazione}{39}{subsubsection.9.3.5}%
+\contentsline {subsubsection}{\numberline {9.3.6}Associazioni VS Attributi}{39}{subsubsection.9.3.6}%
+\contentsline {subsubsection}{\numberline {9.3.7}Implementazione delle associazioni}{40}{subsubsection.9.3.7}%
+\contentsline {subsection}{\numberline {9.4}Associazioni Riflessive e Classi Associative}{40}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Associazioni Riflessive}{40}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}Classi Associative}{40}{subsubsection.9.4.2}%
+\contentsline {subsection}{\numberline {9.5}Generalizzazione}{40}{subsection.9.5}%
+\contentsline {subsubsection}{\numberline {9.5.1}Generalizzazione-Specializzazione (Gen-Spec)}{40}{subsubsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.6}Contenimento}{40}{subsection.9.6}%
+\contentsline {subsubsection}{\numberline {9.6.1}Aggregazione e Composizione}{41}{subsubsection.9.6.1}%
+\contentsline {subsubsection}{\numberline {9.6.2}Aggregazione}{41}{subsubsection.9.6.2}%
+\contentsline {subsubsection}{\numberline {9.6.3}Composizione}{41}{subsubsection.9.6.3}%
