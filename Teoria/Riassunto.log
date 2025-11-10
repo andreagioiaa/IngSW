@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.7)  10 NOV 2025 08:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.7)  10 NOV 2025 09:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1091,7 +1091,9 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 [40]
 
-[41] (Riassunto.aux)
+[41]
+
+[42] (Riassunto.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1100,8 +1102,8 @@ Package rerunfilecheck Info: File `Riassunto.out' has not changed.
 (rerunfilecheck)             Checksum: 4BA258062C77AAB1A292C07CD8F3D4A9;31943.
  ) 
 Here is how much of TeX's memory you used:
- 29446 strings out of 468130
- 586514 string characters out of 5440706
+ 29447 strings out of 468130
+ 586521 string characters out of 5440706
  1029078 words of memory out of 5000000
  57293 multiletter control sequences out of 15000+600000
  677507 words of font info for 72 fonts, out of 8000000 for 9000
@@ -1111,9 +1113,9 @@ Here is how much of TeX's memory you used:
 iKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/lm/lmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:
 /Program Files/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on Riassunto.pdf (42 pages, 410625 bytes).
+Output written on Riassunto.pdf (43 pages, 412292 bytes).
 PDF statistics:
- 1217 PDF objects out of 1440 (max. 8388607)
- 286 named destinations out of 1000 (max. 500000)
+ 1222 PDF objects out of 1440 (max. 8388607)
+ 287 named destinations out of 1000 (max. 500000)
  1479 words of extra memory for PDF output out of 10000 (max. 10000000)
 

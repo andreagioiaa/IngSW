@@ -1554,12 +1554,12 @@ Identificare le relazioni di inclusione:
 
 \subsection{Definizione}
 \subsubsection{Diagramma UML delle classi}
-è un diagramma strutturale, mostra una vista statica del modello, l'organizzazione del progetto del sistema ma non mostra informazioni temporali. I suoi elementi corrispondono a concetti fondamentali dell'OO. \\
+Diagramma strutturale, mostra una vista statica del modello, l'organizzazione del progetto del sistema ma non mostra informazioni temporali. I suoi elementi corrispondono a concetti fondamentali dell'OO. \\
 Rappresenta:
 \begin{itemize}
-    \item tipi di oggetti (classi) del sistema che corrispondono alle entità che esistono nel sistema.
-    \item le relazioni statiche tra classi ed i vincoli che si applicano a tali relazioni.
-    \item le caratteristiche delle classi: proprietà (attributi e responsabilità dei metodi) e responsabilità.
+    \item tipi di oggetti (classi) del sistema, corrispondono alle entità esistenti nel sistema.
+    \item relazioni statiche tra classi ed i vincoli che si applicano a tali relazioni.
+    \item caratteristiche delle classi: proprietà (attributi e responsabilità dei metodi) e responsabilità.
 \end{itemize}
 
 \subsubsection{Utilizzo del diagramma}
@@ -1594,15 +1594,15 @@ Una classe, con nome singolare e tendenzialmente scritto in UpperCamelCase, è r
     \item \textbf{- privato}: solo la classe originale può accedere a tali attributi.
 \end{itemize}
 	
-\noindent Il nome dell'attributo è l'unico parametro obbligatorio ed il tipo può essere sia un tipo primitivo che una classe definita nello stesso diagramma.
+\noindent Il \textbf{nome} dell'attributo è l'\underline{unico parametro obbligatorio} ed il \textbf{tipo} può essere sia un tipo primitivo che una classe definita nello stesso diagramma.
+	
+\noindent La \textbf{molteplicità} indica il quantitativo degli attributi di un certo tipo: permette di indicare attributi come array o matrici, il valore default è 1. Il numero minimo e massimo possono essere racchiusi tra parentesi quadre quando il tipo è semplice. \\
+Gli elementi di una molteplicità a più valori sono considerati come un insieme. \\
+Se sono dotati di ordine è usata la notazione \{ordered\} \\
+Se sono possibili valori duplicati è usata la notazione \{nonunique\}
 
-\noindent La molteplicità indica il quantitativo degli attributi di un certo tipo: permette di indicare attributi come array o matrici, il valore default è 1. Il numero minimo e massimo possono essere racchiusi tra parentesi quadre quando il tipo è semplice.
-Gli elementi di una molteplicità a più valori sono considerati come un insieme.
-Se sono dotati di ordine è usata la notazione {ordered}
-Se sono possibili valori duplicati è usata la notazione {nonunique}
-
-\noindent valoreDefault è il valore assegnato all'attributo di default, se nessun valore è specificato durante la creazione.
-{proprietà} indica caratteristiche aggiuntive dell'attributo (es: readOnly).
+\noindent \textbf{valoreDefault} è il valore assegnato all'attributo di default, se nessun valore è specificato durante la creazione. \\
+\textbf{\{proprietà\}} indica caratteristiche aggiuntive dell'attributo (es: readOnly).
 
 \subsubsection{Operazioni}
 Rappresentano i metodi di una classe: operazioni invocabili sugli oggetti istanza della classe. Sono le azioni che possono essere svolte da una classe di oggetti, tendenzialmente non sono riportate le operazioni che si occupano solo di modificare gli attributi, perché facilmente deducibili.
@@ -1711,7 +1711,7 @@ I concetti di generalizzazione e specializzazione in UML sono analoghi a quelli 
 \end{itemize}
 
 \subsection{Contenimento}
-La relazione di contenimento rappresenta il legame tra un insieme e le sue parti, tra il contenitore e il suo contenuto.
+La relazione di contenimento rappresenta il legame tra un insieme e le sue parti (tra il contenitore e il suo contenuto).
 
 \subsubsection{Aggregazione e Composizione}
 Il contenimento può essere:
